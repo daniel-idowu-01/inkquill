@@ -1,8 +1,11 @@
-import NavBar from "./components/NavBar";
-import Hero from "./components/Hero";
-import Summarize from "./components/Summarize";
-import Paraphrase from "./components/Paraphrase";
-import FAQs from "./components/FAQs";
+import {
+  NavBar,
+  Hero,
+  Summarize,
+  Paraphrase,
+  FAQs,
+  Newsletter,
+} from "./components";
 
 export default function Home() {
   return (
@@ -35,6 +38,10 @@ export default function Home() {
 
       <section>
         <FAQs />
+      </section>
+
+      <section>
+        <Newsletter />
       </section>
     </main>
   );
