@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Summarize from "./components/Summarize";
 import Paraphrase from "./components/Paraphrase";
+import FAQs from "./components/FAQs";
 
 export default function Home() {
   return (
@@ -30,6 +31,10 @@ export default function Home() {
 
       <section>
         <Paraphrase />
+      </section>
+
+      <section>
+        <FAQs />
       </section>
     </main>
   );

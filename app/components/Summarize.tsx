@@ -10,7 +10,7 @@ const Summarize = () => {
       </article>
       <article className="lg:w-1/2 text-cotton-white">
         <p className="text-4xl font-semibold">Summarize Notes</p>
-        <p className="my-5 text-lg">
+        <p className="text-justify md:text-left my-5 text-lg">
           InkQuill utilizes advanced artificial intelligence to condense your
           lengthy notes into concise summaries. We appreciate that learning
           isn't just about amassing information, but also about understanding it

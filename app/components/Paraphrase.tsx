@@ -9,7 +9,7 @@ const Paraphrase = () => {
         <p className="text-4xl font-semibold">
           Paraphrase <span className="text-azure-blue">Notes</span>{" "}
         </p>
-        <p className="my-5 text-lg opacity-70">
+        <p className="text-justify md:text-left my-5 text-lg opacity-70">
           Paraphrasing is the art of expressing an idea in your own words while
           maintaining its essence. It's like putting information into a new
           language to showcase your understanding. Instead of simply repeating
