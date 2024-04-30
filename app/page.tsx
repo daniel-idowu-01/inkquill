@@ -1,6 +1,7 @@
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Summarize from "./components/Summarize";
+import Paraphrase from "./components/Paraphrase";
 
 export default function Home() {
   return (
@@ -25,6 +26,10 @@ export default function Home() {
 
       <section>
         <Summarize />
+      </section>
+
+      <section>
+        <Paraphrase />
       </section>
     </main>
   );
