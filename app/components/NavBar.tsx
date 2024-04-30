@@ -42,7 +42,7 @@ const NavBar = () => {
 
       <Hamburger />
       <div className="hidden md:block">
-        <Button label="Contact Us" />
+        <Button whiteBg={false} label="Contact Us" />
       </div>
     </div>
   );
