@@ -14,7 +14,7 @@ const Newsletter = () => {
         <p className="opacity-70">Subscribe To Our Newsletter</p>
       </section>
 
-      <section className="flex gap-10 md:px-10 lg:px-20 py-10">
+      <section className="flex gap-10 lg:px-20 py-10">
         <article className="hidden lg:flex justify-center w-1/2">
           <Image
             className="rounded-md w-full"
@@ -26,7 +26,7 @@ const Newsletter = () => {
         </article>
 
         <article className="flex items-center w-full lg:w-1/2 bg-azure-blue p-5 md:p-10 rounded-md">
-          <aside className="m-auto flex flex-col gap-5 w-full">
+          <aside className="m-auto flex flex-col gap-5 w-full md:w-[80%]">
             <Input
               className=" placeholder:text-lg"
               type="text"
