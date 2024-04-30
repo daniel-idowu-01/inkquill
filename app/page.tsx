@@ -11,8 +11,8 @@ export default function Home() {
         <NavBar />
 
         <section className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 py-24 md:py-32 text-center md:text-left">
-          <article className="md:w-[60%]">
-            <p className="kanit-semibold text-5xl md:text-7xl uppercase leading-snug">
+          <article className=" md:w-1/2 lg:w-[60%]">
+            <p className="kanit-semibold text-5xl lg:text-7xl uppercase leading-snug">
               Tap into the <span className="md:text-azure-blue">strength</span>{" "}
               of your notes
             </p>

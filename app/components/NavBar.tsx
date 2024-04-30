@@ -32,7 +32,7 @@ const NavBar = () => {
         </span>
       </p>
 
-      <article className="hidden md:flex items-center justify-between w-1/4">
+      <article className="hidden md:flex items-center justify-between md:w-1/2 lg:w-1/4">
         {links.map((link) => (
           <Link className="hover:underline" href={link.link}>
             {link.title}
