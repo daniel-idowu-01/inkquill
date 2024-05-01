@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { links } from "../data/data";
@@ -7,8 +7,24 @@ import Hamburger from "../ui/icons/Hamburger";
 import Cancel from "../ui/icons/Cancel";
 
 const NavBar = () => {
+  const sidebarRef = useRef<HTMLElement | null>(null);
   const [sideBar, setSideBar] = useState(false);
 
+  // to hide sidebar when clicking outside of the sidebar
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
+        setSideBar(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // function to toggle sidebar
   const handleSideBar = () => {
     setSideBar(!sideBar);
   };
@@ -40,9 +56,10 @@ const NavBar = () => {
 
       {/* mobile sidebar */}
       <article
+        ref={sidebarRef}
         className={`absolute top-0 ${
           sideBar ? "right-0" : "-right-full"
-        } h-screen bg-cotton-white w-[80%] transition-all`}
+        } h-screen bg-cotton-white w-[80%] transition-all md:hidden`}
       >
         <span
           onClick={() => setSideBar(false)}
