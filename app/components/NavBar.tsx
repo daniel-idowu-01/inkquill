@@ -1,11 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { links } from "../data/data";
 import Hamburger from "../ui/icons/Hamburger";
+import Cancel from "../ui/icons/Cancel";
 
 const NavBar = () => {
-  
+  const [sideBar, setSideBar] = useState(false);
+
+  const handleSideBar = () => {
+    setSideBar(!sideBar);
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -24,10 +30,35 @@ const NavBar = () => {
         ))}
       </article>
 
-      <Hamburger />
       <div className="hidden md:block">
         <Button whiteBg={false} label="Contact Us" />
       </div>
+
+      <div className="md:hidden" onClick={handleSideBar}>
+        <Hamburger />
+      </div>
+
+      {/* mobile sidebar */}
+      <article
+        className={`absolute top-0 ${
+          sideBar ? "right-0" : "-right-full"
+        } h-screen bg-cotton-white w-[80%] transition-all`}
+      >
+        <span
+          onClick={() => setSideBar(false)}
+          className="absolute right-5 top-5"
+        >
+          <Cancel />
+        </span>
+
+        <div className="relative top-32 flex flex-col gap-14 text-center text-2xl">
+          {links.map((link) => (
+            <Link className="text-azure-blue hover:underline" href={link.link}>
+              {link.title}
+            </Link>
+          ))}
+        </div>
+      </article>
     </div>
   );
 };
