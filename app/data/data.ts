@@ -1,3 +1,22 @@
+const links = [
+  {
+    title: "Home",
+    link: "/",
+  },
+  {
+    title: "About",
+    link: "/",
+  },
+  {
+    title: "Features",
+    link: "/",
+  },
+  {
+    title: "FAQs",
+    link: "/",
+  },
+];
+
 const faqs = [
   {
     trigger: "How can InkQuill help me as a student?",
@@ -21,4 +40,4 @@ const faqs = [
   },
 ];
 
-export { faqs };
+export { links, faqs };

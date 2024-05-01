@@ -1,27 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
+import { links } from "../data/data";
 import Hamburger from "../ui/icons/Hamburger";
 
 const NavBar = () => {
-  const links = [
-    {
-      title: "Home",
-      link: "/",
-    },
-    {
-      title: "About",
-      link: "/",
-    },
-    {
-      title: "Features",
-      link: "/",
-    },
-    {
-      title: "FAQs",
-      link: "/",
-    },
-  ];
+  
 
   return (
     <div className="flex items-center justify-between">
