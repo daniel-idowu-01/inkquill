@@ -58,7 +58,7 @@ const NavBar = () => {
       <article
         ref={sidebarRef}
         className={`absolute top-0 ${
-          sideBar ? "right-0" : "-right-full"
+          sideBar ? "left-0" : "-left-full"
         } h-screen bg-cotton-white w-[80%] transition-all md:hidden`}
       >
         <span
