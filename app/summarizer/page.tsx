@@ -26,7 +26,7 @@ const Summarizer = () => {
           <p className="text-center">or</p>
           <div className="flex justify-center">
             <Link
-              href=""
+              href="/summarizer/paste-text"
               className="border border-azure-blue text-azure-blue px-4 py-3 rounded-md"
             >
               Paste Text
