@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 
 const Newsletter = () => {
   return (
-    <div className="py-10 lg:pb-20">
+    <div className="py-10 lg:py-20">
       <section className="text-center w-[90%] lg:w-[60%] mx-auto">
         <p className="text-black text-2xl md:text-4xl tracking-wide mb-1">
           Join Our{" "}
@@ -14,7 +14,7 @@ const Newsletter = () => {
         <p className="opacity-70">Subscribe To Our Newsletter</p>
       </section>
 
-      <section className="flex gap-10 lg:px-20 py-10">
+      <section className="flex gap-10 py-10">
         <article className="hidden lg:flex justify-center w-1/2">
           <Image
             className="rounded-md w-full"

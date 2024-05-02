@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Button from "../ui/Button";
 import HeroImage from "../ui/hero-image/hero-image.svg";
-import Link from "next/link";
 
 const Hero = () => {
   return (
