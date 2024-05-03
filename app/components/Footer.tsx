@@ -16,8 +16,8 @@ const Footer = () => {
       <section>
         <h2 className="text-3xl mb-3">Company</h2>
         <article className="flex flex-col gap-3 text-xl">
-          {links.map((link) => (
-            <Link className="hover:underline" href={link.link}>
+          {links.map((link, index) => (
+            <Link key={index} className="hover:underline" href={link.link}>
               {link.title}
             </Link>
           ))}

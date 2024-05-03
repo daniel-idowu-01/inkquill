@@ -5,15 +5,15 @@ const links = [
   },
   {
     title: "About",
-    link: "/",
+    link: "#about",
   },
   {
     title: "Features",
-    link: "/",
+    link: "#features",
   },
   {
     title: "FAQs",
-    link: "/",
+    link: "#faqs",
   },
 ];
 
