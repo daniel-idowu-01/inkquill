@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 
 const Paraphrase = () => {
   return (
-    <section className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-0 justify-between items-center py-10 lg:py-20 rounded-tr-3xl rounded-bl-3xl">
+    <section className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-0 justify-between items-center p-10 lg:p-20 rounded-tr-3xl rounded-bl-3xl">
       <article className="lg:w-1/2">
         <p className="text-4xl font-semibold">
           Paraphrase <span className="text-azure-blue">Notes</span>{" "}
@@ -19,7 +19,9 @@ const Paraphrase = () => {
           own voice to discuss someone else's ideas, which comes in handy,
           especially when working on projects to steer clear of plagiarism.
         </p>
-        <Button whiteBg={false} label="Get Started" />
+        <div className="bg-azure-blue md:bg-transparent w-fit rounded-md">
+          <Button whiteBg={false} label="Get Started" />
+        </div>
       </article>
 
       <article className="lg:w-1/2 flex justify-end">

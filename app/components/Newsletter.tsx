@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 
 const Newsletter = () => {
   return (
-    <div className="py-10 lg:py-20">
+    <div className="p-10 lg:p-20">
       <section className="text-center w-[90%] lg:w-[60%] mx-auto">
         <p className="text-black text-2xl md:text-4xl tracking-wide mb-1">
           Join Our{" "}
