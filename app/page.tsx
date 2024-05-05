@@ -1,6 +1,3 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import {
   NavBar,
   Hero,
@@ -12,41 +9,6 @@ import {
 } from "./components";
 
 export default function Home() {
-  const apiKey = process.env.API_KEY ?? "helloworld";
-  const [isLoading, setIsLoading] = useState(false);
-
-  const myHeaders = new Headers();
-  myHeaders.append("apikey", apiKey);
-
-  const formdata = new FormData();
-  formdata.append("language", "eng");
-  formdata.append("isOverlayRequired", "false");
-  formdata.append("url", "http://dl.a9t9.com/ocrbenchmark/eng.png");
-  formdata.append("iscreatesearchablepdf", "false");
-  formdata.append("issearchablepdfhidetextlayer", "false");
-
-  const requestOptions: RequestInit = {
-    method: "POST",
-    headers: myHeaders,
-    body: formdata,
-    redirect: "follow",
-  };
-
-  useEffect(() => {
-    const getText = async () => {
-      await fetch("https://api.ocr.space/parse/image", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.error(error));
-    };
-
-    getText();
-  }, []);
-
-  // set loading state
-  if (isLoading) {
-    console.log("fetching...");
-  }
 
   return (
     <main className="md:bg-cotton-white">
