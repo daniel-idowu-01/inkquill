@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const useOcrApi = () => {
   const apiKey = process.env.API_KEY ?? "helloworld";
+  const [file, setFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,7 +47,7 @@ const useOcrApi = () => {
         setIsLoading(false);
       });
   };
-  return { getText };
+  return { getText, setFile };
 };
 
 export default useOcrApi;

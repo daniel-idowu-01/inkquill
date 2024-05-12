@@ -1,9 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, ChangeEventHandler } from "react";
 import Link from "next/link";
-import { NavBar } from "../components";
+import { NavBar } from "@/app/components";
+import { Input } from "@/components/ui/input";
+import useOcrApi from "@/app/utils/useOcrApi";
 
-const Summarizer = () => {
+
+const Upload = () => {
+  const { setFile, getText } = useOcrApi();
+
+  // update upload file
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadedFile = event.target.files?.[0]; // Null check
+    if (uploadedFile) {
+      setFile(uploadedFile);
+      /* setFileUrl(URL.createObjectURL(uploadedFile)); */ // Create blob URL
+    }
+  };
+
+  useEffect(() => {
+    getText();
+  }, []);
+
   return (
     <main>
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
@@ -22,12 +40,12 @@ const Summarizer = () => {
       {/* main content of the page */}
       <section className="mx-auto bg-cotton-white w-[90%] md:w-[70%] h-96 pt-10">
         <article className="flex flex-col justify-center gap-5 h-full">
-          <Link
-            href="/summarizer/upload"
-            className="w-fit mx-auto border border-azure-blue hover:text-azure-blue bg-azure-blue hover:bg-transparent text-cotton-white px-4 py-3 rounded-md transition-all"
-          >
-            Upload File
-          </Link>
+          <Input
+            type="file"
+            accept=".pdf"
+            onChange={handleFileChange}
+            className="w-1/2 lg:w-1/4 mx-auto border-azure-blue text-azure-blue"
+          />
           <p className="text-center">or</p>
           <div className="flex justify-center">
             <Link
@@ -40,7 +58,7 @@ const Summarizer = () => {
         </article>
       </section>
     </main>
-  );
-};
+  )
+}
 
-export default Summarizer;
+export default Upload
