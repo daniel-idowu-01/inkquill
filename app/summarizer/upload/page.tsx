@@ -1,26 +1,32 @@
 "use client";
+import axios from "axios";
 import React, { useState, useEffect, ChangeEventHandler } from "react";
 import Link from "next/link";
+import Button from "@/app/ui/Button";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
 import useOcrApi from "@/app/utils/useOcrApi";
 
-
 const Upload = () => {
-  const { setFile, getText } = useOcrApi();
+  const preset_key = "yykpflgd";
+  const cloud_name = "ds8bolg2f";
+  const { setFile, setFileUrl, getText } = useOcrApi();
 
   // update upload file
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = event.target.files?.[0]; // Null check
-    if (uploadedFile) {
+    const formdata = new FormData();
+    formdata.append("file", uploadedFile)
+    formdata.append("upload_preset", preset_key);
+    axios
+      .post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formdata)
+      .then((res) => setFileUrl(res.data.secure_url))
+      .catch((err) => console.log(err));
+    /* if (uploadedFile) {
       setFile(uploadedFile);
-      /* setFileUrl(URL.createObjectURL(uploadedFile)); */ // Create blob URL
-    }
+      setFileUrl(URL.createObjectURL(uploadedFile)); // Create blob URL
+    } */
   };
-
-  useEffect(() => {
-    getText();
-  }, []);
 
   return (
     <main>
@@ -39,26 +45,19 @@ const Upload = () => {
 
       {/* main content of the page */}
       <section className="mx-auto bg-cotton-white w-[90%] md:w-[70%] h-96 pt-10">
-        <article className="flex flex-col justify-center gap-5 h-full">
+        <article className="w-1/2 lg:w-1/4 mx-auto flex flex-col justify-center gap-10 h-full">
           <Input
             type="file"
-            accept=".pdf"
             onChange={handleFileChange}
-            className="w-1/2 lg:w-1/4 mx-auto border-azure-blue text-azure-blue"
+            className=" border-azure-blue text-azure-blue"
           />
-          <p className="text-center">or</p>
-          <div className="flex justify-center">
-            <Link
-              href="/summarizer/paste-text"
-              className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-all"
-            >
-              Paste Text
-            </Link>
+          <div onClick={getText} className="mx-auto">
+            <Button whiteBg={false} label="Upload Image" />
           </div>
         </article>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default Upload
+export default Upload;

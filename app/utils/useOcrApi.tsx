@@ -19,11 +19,12 @@ const useOcrApi = () => {
   formdata.append("language", "eng");
   formdata.append("isOverlayRequired", "false");
   if (fileUrl !== null) {
-    formdata.append("url", "http://dl.a9t9.com/ocrbenchmark/eng.png");
+    formdata.append("url", fileUrl);
+    /* "https://imgs.search.brave.com/jL9Wn0n4qvKp6DdN3Z8gjm7SJ7op4NDzZY0DsDEsN-E/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzUxLzQz/LzM3LzUxNDMzN2Ux/ZWI0ZGU4ZTU1MmRk/MGNjYWVhODM3Zjhj/LmpwZw" */
   } else {
     console.error("File is null. Cannot append null value to FormData.");
   }
-  formdata.append("filetype", "pdf");
+  formdata.append("filetype", "png");
   formdata.append("iscreatesearchablepdf", "false");
   formdata.append("issearchablepdfhidetextlayer", "false");
 
@@ -47,7 +48,7 @@ const useOcrApi = () => {
         setIsLoading(false);
       });
   };
-  return { getText, setFile };
+  return { getText, setFile, setFileUrl };
 };
 
 export default useOcrApi;
