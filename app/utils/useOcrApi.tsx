@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const useOcrApi = () => {
   const apiKey = process.env.API_KEY ?? "helloworld";
+  const [data, setData] = useState({})
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,7 +36,8 @@ const useOcrApi = () => {
     await fetch("https://api.ocr.space/parse/image", requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        console.log(result);
+        const parsedData = JSON.parse(result);
+        console.log(parsedData.ParsedResults[0].ParsedText);
         setIsLoading(false);
       })
       .catch((error) => {
