@@ -9,6 +9,9 @@ interface SetDataProp {
 }
 
 export const store = create<DataProp & SetDataProp>((set) => ({
-  data: "",
-  setData: (newString: string) => set({ data: newString }),
+  data: localStorage.getItem("dataString") || "",
+  setData: (newString: string) => {
+    set({ data: newString });
+    localStorage.setItem("dataString", newString);
+  },
 }));

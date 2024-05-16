@@ -1,9 +1,12 @@
+"use client"
 import React from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
 import Button from "@/app/ui/Button";
+import { store } from "@/store";
 
 const PasteText = () => {
+  const { data } = store();
   return (
     <main>
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
@@ -27,6 +30,7 @@ const PasteText = () => {
           cols={30}
           rows={10}
           placeholder="Paste text"
+          value={data}
           className="mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 

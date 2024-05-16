@@ -2,10 +2,10 @@ import { store } from "@/store";
 import { useState } from "react";
 
 const useOcrApi = () => {
+  const { setData } = store();
   const apiKey = process.env.OCR_API_KEY ?? "helloworld";
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
-  const { data, setData } = store();
 
   // set loading state
   if (isLoading) {
@@ -47,7 +47,6 @@ const useOcrApi = () => {
       });
   };
 
-  console.log(data)
   return { getText, setFileUrl, fileUrl };
 };
 
