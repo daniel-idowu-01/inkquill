@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    API_KEY: "K83747338588957"
+    OCR_API_KEY: "K83747338588957",
+    CLOUDINARY_PRESET_KEY: "yykpflgd",
+    CLOUDINARY_CLOUD_NAME: "ds8bolg2f",
   },
 };
 

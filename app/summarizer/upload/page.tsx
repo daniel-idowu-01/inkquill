@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 import useOcrApi from "@/app/utils/useOcrApi";
 
 const Upload = () => {
-  const preset_key = "yykpflgd";
-  const cloud_name = "ds8bolg2f";
+  const preset_key = process.env.CLOUDINARY_PRESET_KEY ?? "";
+  const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
   const file_icon =
     "https://imgs.search.brave.com/PkNC4u9TBqgKPrkKztC8BMORU8gNafaa0E1jKCgBEYw/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbi1pY29ucy5j/b20vaWNvbnMyLzg4/Ni9QTkcvNTEyL2Zp/bGVfSW1hZ2VfZG93/bmxvYWRfaWNvbi1p/Y29ucy5jb21fNjg5/NDIucG5n";
   const { fileUrl, setFileUrl, getText } = useOcrApi();

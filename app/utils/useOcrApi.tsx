@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useOcrApi = () => {
-  const apiKey = process.env.API_KEY ?? "helloworld";
+  const apiKey = process.env.OCR_API_KEY ?? "helloworld";
   const [data, setData] = useState({})
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +37,7 @@ const useOcrApi = () => {
       .then((response) => response.text())
       .then((result) => {
         const parsedData = JSON.parse(result);
-        console.log(parsedData.ParsedResults[0].ParsedText);
+        setData(parsedData.ParsedResults[0].ParsedText);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -45,6 +45,8 @@ const useOcrApi = () => {
         setIsLoading(false);
       });
   };
+
+  console.log(data)
   return { getText, setFileUrl, fileUrl };
 };
 
