@@ -1,14 +1,16 @@
 "use client";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Button from "@/app/ui/Button";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
 import useOcrApi from "@/app/utils/useOcrApi";
+import Spinner from "@/app/ui/icons/Spinner/Spinner";
 
 const Upload = () => {
   const { fileUrl, setFileUrl, getText } = useOcrApi();
+  const [fileLoading, setFileLoading] = useState(false);
   const preset_key = process.env.CLOUDINARY_PRESET_KEY ?? "";
   const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
   const file_icon =
@@ -19,6 +21,7 @@ const Upload = () => {
     const uploadedFile = event.target.files?.[0]; // Null check
     // Check if uploadedFile is defined
     if (uploadedFile) {
+      setFileLoading(true);
       const formdata = new FormData();
       formdata.append("file", uploadedFile);
       formdata.append("upload_preset", preset_key);
@@ -27,8 +30,14 @@ const Upload = () => {
           `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
           formdata
         )
-        .then((res) => setFileUrl(res.data.secure_url))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          setFileUrl(res.data.secure_url);
+          setFileLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setFileLoading(false);
+        });
     }
   };
 
@@ -59,7 +68,7 @@ const Upload = () => {
             accept=".pdf"
             className=" border-azure-blue text-azure-blue"
           />
-          <div onClick={getText} className="mx-auto">
+          <div onClick={getText} className="border border-azure-blue rounded-md mx-auto">
             <Button whiteBg={false} label="Upload Image" />
           </div>
         </article>

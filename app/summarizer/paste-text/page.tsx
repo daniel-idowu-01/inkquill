@@ -30,7 +30,7 @@ const PasteText = () => {
           cols={30}
           rows={10}
           placeholder="Paste text"
-          value={data}
+          defaultValue={data}
           className="mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 

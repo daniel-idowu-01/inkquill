@@ -1,16 +1,13 @@
 import { store } from "@/store";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const useOcrApi = () => {
   const { setData } = store();
-  const apiKey = process.env.OCR_API_KEY ?? "helloworld";
+  const router = useRouter();
+  const apiKey = process.env.OCR_API_KEY ?? "";
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
-
-  // set loading state
-  if (isLoading) {
-    console.log("fetching...");
-  }
 
   // form info
   const myHeaders = new Headers();
@@ -34,12 +31,14 @@ const useOcrApi = () => {
   };
 
   const getText = async () => {
+    setIsLoading(true);
     await fetch("https://api.ocr.space/parse/image", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         const parsedData = JSON.parse(result);
         setData(parsedData.ParsedResults[0].ParsedText);
         setIsLoading(false);
+        router.push("/summarizer/paste-text");
       })
       .catch((error) => {
         console.error(error);
@@ -47,7 +46,7 @@ const useOcrApi = () => {
       });
   };
 
-  return { getText, setFileUrl, fileUrl };
+  return { getText, setFileUrl, fileUrl, isLoading };
 };
 
 export default useOcrApi;
