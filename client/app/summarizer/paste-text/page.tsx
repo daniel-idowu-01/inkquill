@@ -1,34 +1,14 @@
 "use client";
-import axios from "axios";
-import React, {useState} from "react";
+import React from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
 import Button from "@/app/ui/Button";
 import { store } from "@/store";
+import summarizeApi from "@/app/utils/summarizeApi";
 
 const PasteText = () => {
-  const { data } = store();
-  const apiData = {
-    text: data
-  }
-
-  const summarizeText = () => {
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    // Make the POST request
-    axios
-      .post("http://localhost:8000/api", JSON.stringify(apiData), { headers })
-      .then((response) => {
-        // Handle the response
-        console.log("Response data:", response.data);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error making POST request:", error);
-      });
-  };
+  const { data, setData } = store();
+  const { summarizeText, summarizedText } = summarizeApi();
 
   return (
     <main>
@@ -48,6 +28,7 @@ const PasteText = () => {
       {/* main content of the page */}
       <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
         <textarea
+          onChange={(e) => setData(e.target.value)}
           name="paste-text"
           id="paste-text"
           cols={30}
@@ -58,7 +39,7 @@ const PasteText = () => {
         ></textarea>
 
         <article className="mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
-          Summarized text
+          {summarizedText ? summarizedText : "Summarized text"}
         </article>
       </section>
 
