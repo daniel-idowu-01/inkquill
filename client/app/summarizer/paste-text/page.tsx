@@ -1,5 +1,6 @@
-"use client"
-import React from "react";
+"use client";
+import axios from "axios";
+import React, {useState} from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
 import Button from "@/app/ui/Button";
@@ -7,6 +8,28 @@ import { store } from "@/store";
 
 const PasteText = () => {
   const { data } = store();
+  const apiData = {
+    text: data
+  }
+
+  const summarizeText = () => {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    // Make the POST request
+    axios
+      .post("http://localhost:8000/api", JSON.stringify(apiData), { headers })
+      .then((response) => {
+        // Handle the response
+        console.log("Response data:", response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error making POST request:", error);
+      });
+  };
+
   return (
     <main>
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
@@ -39,7 +62,10 @@ const PasteText = () => {
         </article>
       </section>
 
-      <div className="flex justify-center mt-10 bg-azure-blue md:bg-transparent p-3 md:p-0 rounded-tr-3xl rounded-bl-3xl">
+      <div
+        onClick={summarizeText}
+        className="flex justify-center mt-10 bg-azure-blue md:bg-transparent p-3 md:p-0 rounded-tr-3xl rounded-bl-3xl"
+      >
         <Button whiteBg={false} label="Summarize" />
       </div>
     </main>
