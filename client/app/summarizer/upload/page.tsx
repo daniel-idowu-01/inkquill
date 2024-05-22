@@ -68,9 +68,16 @@ const Upload = () => {
             accept=".pdf"
             className=" border-azure-blue text-azure-blue"
           />
-          <div onClick={getText} className="border border-azure-blue rounded-md mx-auto">
-            <Button whiteBg={false} label="Upload Image" />
-          </div>
+
+          <button
+            onClick={getText}
+            disabled={fileLoading}
+            className={`${
+              fileLoading && "opacity-50"
+            } bg-cotton-white md:bg-azure-blue text-azure-blue md:text-cotton-white hover:text-cotton-white md:hover:text-azure-blue px-6 py-3 rounded-md border border-azure-blue hover:bg-azure-blue md:hover:bg-transparent transition-all font-[550] mx-auto`}
+          >
+            {fileLoading ? "Uploading..." : "Upload File"}
+          </button>
         </article>
       </section>
     </main>

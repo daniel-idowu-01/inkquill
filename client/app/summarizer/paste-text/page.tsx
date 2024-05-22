@@ -8,7 +8,7 @@ import summarizeApi from "@/app/utils/summarizeApi";
 
 const PasteText = () => {
   const { data, setData } = store();
-  const { summarizeText, summarizedText } = summarizeApi();
+  const { summarizeText, summarizedText, summarizeLoading } = summarizeApi();
 
   return (
     <main>
@@ -43,12 +43,17 @@ const PasteText = () => {
         </article>
       </section>
 
-      <div
-        onClick={summarizeText}
-        className="flex justify-center mt-10 bg-azure-blue md:bg-transparent p-3 md:p-0 rounded-tr-3xl rounded-bl-3xl"
-      >
-        <Button whiteBg={false} label="Summarize" />
-      </div>
+      <section className="flex justify-center my-5">
+        <button
+          onClick={summarizeText}
+          disabled={summarizeLoading}
+          className={`${
+            summarizeLoading && "opacity-50"
+          } bg-cotton-white md:bg-azure-blue text-azure-blue md:text-cotton-white hover:text-cotton-white md:hover:text-azure-blue px-6 py-3 rounded-md border border-azure-blue hover:bg-azure-blue md:hover:bg-transparent transition-all font-[550] mx-auto`}
+        >
+          {summarizeLoading ? "Summarizing..." : "Summarize"}
+        </button>
+      </section>
     </main>
   );
 };

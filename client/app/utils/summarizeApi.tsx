@@ -4,12 +4,14 @@ import { useState } from "react";
 
 const summarizeApi = () => {
   const { data } = store();
+  const [summarizeLoading, setSummarizeLoading] = useState(false);
   const [summarizedText, setSummarizedText] = useState("");
   const apiData = {
     text: data,
   };
 
   const summarizeText = () => {
+    setSummarizeLoading(true);
     const headers = {
       "Content-Type": "application/json",
     };
@@ -20,14 +22,15 @@ const summarizeApi = () => {
       .then((response) => {
         // Handle the response
         setSummarizedText(response.data.summarize.summary);
-        console.log("Response data:", response.data);
+        setSummarizeLoading(false);
       })
       .catch((error) => {
         // Handle errors
         console.error("Error making POST request:", error);
+        setSummarizeLoading(false);
       });
   };
-  return { summarizeText, summarizedText, setSummarizedText };
+  return { summarizeText, summarizedText, setSummarizedText, summarizeLoading };
 };
 
 export default summarizeApi;
