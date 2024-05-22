@@ -1,9 +1,9 @@
-import { store } from "@/store";
+import { useClientStore } from "@/store";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const useOcrApi = () => {
-  const { setData } = store();
+  const { setData } = useClientStore();
   const router = useRouter();
   const apiKey = process.env.OCR_API_KEY ?? "";
   const [fileUrl, setFileUrl] = useState<string>("");

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { store } from "@/store";
+import { useClientStore  } from "@/store";
 import { useState } from "react";
 
 const summarizeApi = () => {
-  const { data } = store();
+  const { data } = useClientStore ();
   const [summarizeLoading, setSummarizeLoading] = useState(false);
   const [summarizedText, setSummarizedText] = useState("");
   const apiData = {

@@ -2,11 +2,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Link from "next/link";
-import Button from "@/app/ui/Button";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
 import useOcrApi from "@/app/utils/useOcrApi";
-import Spinner from "@/app/ui/icons/Spinner/Spinner";
 
 const Upload = () => {
   const { fileUrl, setFileUrl, getText } = useOcrApi();
