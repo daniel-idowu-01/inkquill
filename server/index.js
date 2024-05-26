@@ -14,7 +14,7 @@ const cohere = new CohereClient({
 app.use(cors());
 app.use(express.json());
 
-app.post("/api", (req, res) => {
+app.post("/api/summarize", (req, res) => {
   (async () => {
     try {
       const summarize = await cohere.summarize({
@@ -27,6 +27,23 @@ app.post("/api", (req, res) => {
     }
   })();
 });
+
+app.get("/api/paraphrase", (req, res) => {
+  (async () => {
+    try {
+      const generate = await cohere.generate({
+        prompt: 'Paraphrase this text: "Lexeme categories refer to the different types of words in a language based on their grammatical function and meaning. Some common lexeme categories include nouns, verbs, adjectives, adverbs, pronouns, prepositions, conjunctions, and interjections. Each category serves a specific purpose in constructing sentences and conveying meaning."',
+      });
+    
+      console.log(generate);
+      /* res.json({ summarize });
+      res.end(); */
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+});
+
 
 // at the end of the file
 app.listen(8000, () => {

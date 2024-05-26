@@ -18,7 +18,7 @@ const summarizeApi = () => {
 
     // Make the POST request
     axios
-      .post("http://localhost:8000/api", JSON.stringify(apiData), { headers })
+      .post("http://localhost:8000/api/summarize", JSON.stringify(apiData), { headers })
       .then((response) => {
         // Handle the response
         setSummarizedText(response.data.summarize.summary);
