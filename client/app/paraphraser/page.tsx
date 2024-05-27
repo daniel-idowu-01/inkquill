@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
-import Button from "../ui/Button";
+import AnimatedText from "../components/AnimatedText/AnimatedText";
 import paraphraseApi from "../utils/paraphraseApi";
 
 const Paraphraser = () => {
@@ -39,7 +39,11 @@ const Paraphraser = () => {
         ></textarea>
 
         <article className="mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
-          {paraphrasedText ? paraphrasedText : "Paraphrased text"}
+          {paraphrasedText ? (
+            <AnimatedText text={paraphrasedText} delay={300} />
+          ) : (
+            "Paraphrased text"
+          )}
         </article>
       </section>
 
