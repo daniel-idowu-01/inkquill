@@ -2,12 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
-import Button from "@/app/ui/Button";
-import { useClientStore  } from "@/store";
+import { useClientStore } from "@/store";
 import summarizeApi from "@/app/utils/summarizeApi";
 
 const PasteText = () => {
-  const { data, setData } = useClientStore ();
+  const { data, setData } = useClientStore();
   const { summarizeText, summarizedText, summarizeLoading } = summarizeApi();
 
   return (
