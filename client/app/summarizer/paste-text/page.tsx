@@ -3,12 +3,19 @@ import React from "react";
 import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
+import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
 import summarizeApi from "@/app/utils/summarizeApi";
 
 const PasteText = () => {
   const { data, setData } = useClientStore();
-  const { summarizeText, summarizedText, summarizeLoading } = summarizeApi();
+  const { summarizeText, setSummarizedText, summarizedText, summarizeLoading } =
+    summarizeApi();
 
+  const handleSummarize = () => {
+    summarizeText();
+
+    setSummarizedText("");
+  };
   return (
     <main>
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
@@ -38,13 +45,17 @@ const PasteText = () => {
         ></textarea>
 
         <article className="mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
-          {summarizedText ? summarizedText : "Summarized text"}
+          {summarizedText ? (
+            <AnimatedText text={summarizedText} delay={100} />
+          ) : (
+            "Summarized text"
+          )}
         </article>
       </section>
 
       <section className="flex justify-center my-5">
         <button
-          onClick={summarizeText}
+          onClick={handleSummarize}
           disabled={summarizeLoading}
           className={`${
             summarizeLoading && "opacity-50"

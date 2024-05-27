@@ -52,7 +52,7 @@ const Paraphraser = () => {
 
         <article className="overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {paraphrasedText ? (
-            <AnimatedText text={paraphrasedText} delay={50} />
+            <AnimatedText text={paraphrasedText} delay={100} />
           ) : (
             "Paraphrased text"
           )}
