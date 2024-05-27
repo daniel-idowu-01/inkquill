@@ -7,7 +7,7 @@ interface AnimatedTextProps {
   delay: number
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 100 }) => {
+const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 50 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const words = text.split(" ");
 
