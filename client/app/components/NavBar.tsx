@@ -67,7 +67,7 @@ const NavBar = () => {
         ref={sidebarRef}
         className={`absolute top-0 ${
           sideBar ? "left-0" : "-left-full"
-        } h-screen bg-cotton-white w-[80%] transition-all md:hidden`}
+        } h-screen bg-cotton-white w-[80%] transition-all md:hidden z-10`}
       >
         <span
           onClick={() => setSideBar(false)}
@@ -79,6 +79,7 @@ const NavBar = () => {
         <div className="relative top-32 flex flex-col gap-14 text-center text-2xl">
           {links.map((link, index) => (
             <Link
+              onClick={() => setSideBar(false)}
               key={index}
               className="text-azure-blue hover:underline"
               href={link.link}
@@ -86,6 +87,14 @@ const NavBar = () => {
               {link.title}
             </Link>
           ))}
+
+          <Link onClick={() => setSideBar(false)} href="/contact-us">
+            <button
+              className={`bg-azure-blue text-cotton-white hover:text-cotton-white px-6 py-3 rounded-md hover:bg-opacity-80 transition-all font-[550] mx-auto`}
+            >
+              Contact Us
+            </button>
+          </Link>
         </div>
       </article>
     </div>

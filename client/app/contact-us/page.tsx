@@ -22,7 +22,7 @@ const ContactUs = () => {
         <article className="hidden lg:flex justify-center w-1/2">
           <Image
             className="rounded-md"
-            src="/images/newsletter.jpg"
+            src="/images/contact.svg"
             alt=""
             width={500}
             height={500}
@@ -30,7 +30,7 @@ const ContactUs = () => {
         </article>
 
         <article className="flex items-center w-full lg:w-1/2 bg-azure-blue p-5 md:p-10 rounded-md">
-          <aside className="m-auto flex flex-col gap-5 w-full md:w-[80%]">
+          <aside className="m-auto flex flex-col gap-5 w-full">
             <Input
               className="placeholder:text-lg placeholder:opacity-80"
               type="text"

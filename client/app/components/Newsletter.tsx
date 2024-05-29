@@ -26,7 +26,7 @@ const Newsletter = () => {
         </article>
 
         <article className="flex items-center w-full lg:w-1/2 bg-azure-blue p-5 md:p-10 rounded-md">
-          <aside className="m-auto flex flex-col gap-5 w-full md:w-[80%]">
+          <aside className="m-auto flex flex-col gap-5 w-full">
             <Input
               className=" placeholder:text-lg"
               type="text"
