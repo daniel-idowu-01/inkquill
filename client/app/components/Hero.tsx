@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../ui/Button";
 import HeroImage from "../ui/hero-image/hero-image.svg";
 
@@ -14,7 +15,9 @@ const Hero = () => {
         <p className="text-xl my-7 md:my-5">
           Work intelligently rather than simply putting in more effort
         </p>
-        <Button whiteBg={false} label="Try It Yourself" />
+        <Link href="/summarizer">
+          <Button whiteBg={false} label="Try It Yourself" />
+        </Link>
       </article>
 
       <article className="hidden md:block">

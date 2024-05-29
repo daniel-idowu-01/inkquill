@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Button from "../ui/Button";
 
@@ -18,7 +19,9 @@ const Summarize = () => {
           are distilled into key points, ensuring that your study sessions are
           both targeted and productive.
         </p>
-        <Button whiteBg={true} label="Get Started" />
+        <Link href="/summarizer">
+          <Button whiteBg={true} label="Get Started" />
+        </Link>
       </article>
     </section>
   );

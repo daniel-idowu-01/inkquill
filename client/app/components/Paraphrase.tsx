@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Button from "../ui/Button";
 
@@ -20,7 +21,9 @@ const Paraphrase = () => {
           especially when working on projects to steer clear of plagiarism.
         </p>
         <div className="bg-azure-blue md:bg-transparent w-fit rounded-md">
-          <Button whiteBg={false} label="Get Started" />
+          <Link href="/summarizer">
+            <Button whiteBg={false} label="Get Started" />
+          </Link>
         </div>
       </article>
 
