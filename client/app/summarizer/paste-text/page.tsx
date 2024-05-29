@@ -5,12 +5,15 @@ import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
 import summarizeApi from "@/app/utils/summarizeApi";
+import Speaker from "@/app/ui/icons/Speaker";
+import { speak } from "@/app/utils/TextToSpeech";
 
 const PasteText = () => {
   const { data, setData } = useClientStore();
   const { summarizeText, setSummarizedText, summarizedText, summarizeLoading } =
     summarizeApi();
 
+  // function to summarize text
   const handleSummarize = () => {
     summarizeText();
 
@@ -21,7 +24,7 @@ const PasteText = () => {
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
         <NavBar />
       </section>
-      <section className="flex items-center justify-center gap-5 py-10">
+      <section className="flex items-center justify-center gap-5 pt-10 pb-5">
         <Link
           href="/summarizer"
           className="bg-azure-blue text-cotton-white px-4 py-3 rounded-md"
@@ -32,6 +35,17 @@ const PasteText = () => {
       </section>
 
       {/* main content of the page */}
+      {summarizedText && (
+        <div className="w-[90%] flex justify-end pb-5">
+          <span
+            onClick={() => speak(summarizedText)}
+            className="bg-azure-blue rounded-full p-2 hover:cursor-pointer"
+          >
+            <Speaker />
+          </span>
+        </div>
+      )}
+
       <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}
