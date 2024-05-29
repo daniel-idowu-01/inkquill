@@ -53,7 +53,9 @@ const NavBar = () => {
       </article>
 
       <div className="hidden md:block">
-        <Button whiteBg={false} label="Contact Us" />
+        <Link href="/contact-us">
+          <Button whiteBg={false} label="Contact Us" />
+        </Link>
       </div>
 
       <div className="md:hidden" onClick={handleSideBar}>
