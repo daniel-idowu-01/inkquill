@@ -10,8 +10,13 @@ import { speak } from "@/app/utils/TextToSpeech";
 
 const PasteText = () => {
   const { data, setData } = useClientStore();
-  const { summarizeText, setSummarizedText, summarizedText, summarizeLoading } =
-    summarizeApi();
+  const {
+    summarizeText,
+    setSummarizedText,
+    summarizedText,
+    summarizeLoading,
+    errorLength,
+  } = summarizeApi();
 
   // function to summarize text
   const handleSummarize = () => {
@@ -66,6 +71,12 @@ const PasteText = () => {
           )}
         </article>
       </section>
+
+      {errorLength && (
+          <p className="text-red-500 text-sm text-center my-2">
+            Text must be more than 250 words!
+          </p>
+        )}
 
       <section className="flex justify-center my-5">
         <button
