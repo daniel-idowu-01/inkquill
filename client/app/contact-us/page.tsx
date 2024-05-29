@@ -30,27 +30,42 @@ const ContactUs = () => {
         </article>
 
         <article className="flex items-center w-full lg:w-1/2 bg-azure-blue p-5 md:p-10 rounded-md">
-          <aside className="m-auto flex flex-col gap-5 w-full">
+          <form
+            method="POST"
+            className="m-auto flex flex-col gap-5 w-full"
+            action="https://formsubmit.co/05c1cab5b2be38d30577d50fae9840e3"
+          >
             <Input
+              required
               className="placeholder:text-lg placeholder:opacity-80"
               type="text"
+              name="name"
               placeholder="Name"
             />
             <Input
+              required
               className="placeholder:text-lg placeholder:opacity-80"
               type="email"
+              name="email"
               placeholder="Email"
             />
+            <input type="hidden" name="_captcha" value="false"></input>
             <textarea
+              required
               cols={30}
               rows={10}
+              name="message"
               className="p-2 px-3 rounded-md placeholder:text-xl"
               placeholder="Message..."
             ></textarea>
-            <div>
-              <Button whiteBg={true} label="Submit" />
-            </div>
-          </aside>
+
+            <button
+              type="submit"
+              className={`bg-cotton-white  text-azure-blue px-6 py-3 rounded-md transition-all font-[550]`}
+            >
+              Submit
+            </button>
+          </form>
         </article>
       </section>
     </div>
