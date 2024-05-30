@@ -5,6 +5,8 @@ import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import paraphraseApi from "../utils/paraphraseApi";
+import Speaker from "@/app/ui/icons/Speaker";
+import { speak } from "@/app/utils/TextToSpeech";
 
 const Paraphraser = () => {
   const { data, setData } = useClientStore();
@@ -38,6 +40,17 @@ const Paraphraser = () => {
       </section>
 
       {/* main content of the page */}
+      {paraphrasedText && (
+        <div className="w-[90%] flex justify-end pb-5">
+          <span
+            onClick={() => speak(paraphrasedText)}
+            className="bg-azure-blue rounded-full p-2 hover:cursor-pointer"
+          >
+            <Speaker />
+          </span>
+        </div>
+      )}
+      
       <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}
