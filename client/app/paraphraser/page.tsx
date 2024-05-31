@@ -4,7 +4,7 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
-import ParaphraseApi from "../utils/ParaphraseApi";
+import ParaphraseApi from '../utils/ParaphraseApi';
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
 
