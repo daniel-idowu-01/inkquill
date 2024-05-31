@@ -32,7 +32,7 @@ export default function Home() {
           Welcome to InkQuill, your virtual assistant for notes! Our goal is to
           help you manage and comprehend your notes more easily. We understand
           how demanding college life can be. InkQuill is more than simply an
-          app; it's your study companion on the road to academic success.
+          app; it&apos;s your study companion on the road to academic success.
         </p>
       </section>
 
