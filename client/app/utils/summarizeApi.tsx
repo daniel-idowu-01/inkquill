@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const summarizeApi = () => {
   const { data } = useClientStore();
-  const [errorLength, setErrorLength] = useState(false)
+  const [errorLength, setErrorLength] = useState(false);
   const [summarizeLoading, setSummarizeLoading] = useState(false);
   const [summarizedText, setSummarizedText] = useState("");
   const apiData = {
@@ -19,14 +19,18 @@ const summarizeApi = () => {
 
     if (apiData.text.length < 250) {
       setErrorLength(true);
-      setSummarizeLoading(false)
+      setSummarizeLoading(false);
     } else {
       setErrorLength(false);
       // Make the POST request
       axios
-        .post("http://localhost:8000/api/summarize", JSON.stringify(apiData), {
-          headers,
-        })
+        .post(
+          "https://inkquill.onrender.com/api/summarize",
+          JSON.stringify(apiData),
+          {
+            headers,
+          }
+        )
         .then((response) => {
           // Handle the response
           setSummarizedText(response.data.summarize.summary);
@@ -39,7 +43,13 @@ const summarizeApi = () => {
         });
     }
   };
-  return { summarizeText, summarizedText, setSummarizedText, summarizeLoading, errorLength };
+  return {
+    summarizeText,
+    summarizedText,
+    setSummarizedText,
+    summarizeLoading,
+    errorLength,
+  };
 };
 
 export default summarizeApi;

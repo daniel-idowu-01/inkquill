@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useClientStore  } from "@/store";
+import { useClientStore } from "@/store";
 import { useState } from "react";
 
 const paraphraseApi = () => {
-  const { data } = useClientStore ();
+  const { data } = useClientStore();
   const [paraphraseLoading, setParaphraseLoading] = useState(false);
   const [paraphrasedText, setParaphrasedText] = useState("");
   const apiData = {
@@ -18,7 +18,11 @@ const paraphraseApi = () => {
 
     // Make the POST request
     axios
-      .post("http://localhost:8000/api/paraphrase", JSON.stringify(apiData), { headers })
+      .post(
+        "https://inkquill.onrender.com/api/paraphrase",
+        JSON.stringify(apiData),
+        { headers }
+      )
       .then((response) => {
         // Handle the response
         setParaphrasedText(response.data.generate.generations[0].text);
@@ -30,7 +34,12 @@ const paraphraseApi = () => {
         setParaphraseLoading(false);
       });
   };
-  return { paraphraseText, paraphrasedText, setParaphrasedText, paraphraseLoading };
+  return {
+    paraphraseText,
+    paraphrasedText,
+    setParaphrasedText,
+    paraphraseLoading,
+  };
 };
 
-export default paraphraseApi
+export default paraphraseApi;
