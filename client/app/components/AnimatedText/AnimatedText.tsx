@@ -22,7 +22,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 50 }) => {
     }, delay);
 
     return () => clearInterval(interval);
-  }, [text, delay]);
+  }, [words, text, delay]);
 
   return <span className={styles.animatedText}>{displayedText}</span>;
 };

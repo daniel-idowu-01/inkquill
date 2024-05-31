@@ -2,9 +2,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
-import useOcrApi from "@/app/utils/useOcrApi";
+import useOcrApi from "@/app/utils/UseOcrApi";
 
 const Upload = () => {
   const { fileUrl, setFileUrl, getText } = useOcrApi();
@@ -58,7 +59,13 @@ const Upload = () => {
       <section className="mx-auto bg-cotton-white w-[90%] md:w-[70%] h-96 pt-10">
         <article className="w-1/2 lg:w-1/4 mx-auto flex flex-col justify-center gap-10 h-full">
           {fileUrl && (
-            <img src={file_icon} alt="" className="w-20 h-20 mx-auto" />
+            <Image
+              src={file_icon}
+              alt=""
+              width={50}
+              height={50}
+              className="mx-auto"
+            />
           )}
           <Input
             type="file"
