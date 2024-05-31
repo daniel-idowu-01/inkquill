@@ -5,10 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
-import useOcrApi from "@/app/utils/UseOcrApi";
+import UseOcrApi from "@/app/utils/UseOcrApi";
 
 const Upload = () => {
-  const { fileUrl, setFileUrl, getText } = useOcrApi();
+  const { fileUrl, setFileUrl, getText } = UseOcrApi();
   const [fileLoading, setFileLoading] = useState(false);
   const preset_key = process.env.CLOUDINARY_PRESET_KEY ?? "";
   const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;

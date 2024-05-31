@@ -2,7 +2,7 @@ import { useClientStore } from "@/store";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const useOcrApi = () => {
+const UseOcrApi = () => {
   const { setData } = useClientStore();
   const router = useRouter();
   const apiKey = process.env.OCR_API_KEY ?? "";
@@ -49,4 +49,4 @@ const useOcrApi = () => {
   return { getText, setFileUrl, fileUrl, isLoading };
 };
 
-export default useOcrApi;
+export default UseOcrApi;
