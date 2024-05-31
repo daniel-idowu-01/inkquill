@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
-import UseOcrApi from '@/app/utils/UseOcrApi';
+import UseOcrApi from './UseOcrApi';
 
 const Upload = () => {
   const { fileUrl, setFileUrl, getText } = UseOcrApi();
