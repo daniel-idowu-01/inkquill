@@ -4,7 +4,7 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
-import paraphraseApi from "../utils/paraphraseApi";
+import ParaphraseApi from "../utils/paraphraseApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
 
@@ -15,7 +15,7 @@ const Paraphraser = () => {
     setParaphrasedText,
     paraphrasedText,
     paraphraseLoading,
-  } = paraphraseApi();
+  } = ParaphraseApi();
 
   // function to handle paraphrasing
   const handleParaphrase = () => {

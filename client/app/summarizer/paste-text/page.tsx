@@ -4,7 +4,7 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
-import summarizeApi from "@/app/utils/summarizeApi";
+import SummarizeApi from "@/app/utils/summarizeApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
 
@@ -16,7 +16,7 @@ const PasteText = () => {
     summarizedText,
     summarizeLoading,
     errorLength,
-  } = summarizeApi();
+  } = SummarizeApi();
 
   // function to summarize text
   const handleSummarize = () => {

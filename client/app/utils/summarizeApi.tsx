@@ -2,7 +2,7 @@ import axios from "axios";
 import { useClientStore } from "@/store";
 import { useState } from "react";
 
-const summarizeApi = () => {
+const SummarizeApi = () => {
   const { data } = useClientStore();
   const [errorLength, setErrorLength] = useState(false);
   const [summarizeLoading, setSummarizeLoading] = useState(false);
@@ -52,4 +52,4 @@ const summarizeApi = () => {
   };
 };
 
-export default summarizeApi;
+export default SummarizeApi;

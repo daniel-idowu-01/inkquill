@@ -2,7 +2,7 @@ import axios from "axios";
 import { useClientStore } from "@/store";
 import { useState } from "react";
 
-const paraphraseApi = () => {
+const ParaphraseApi = () => {
   const { data } = useClientStore();
   const [paraphraseLoading, setParaphraseLoading] = useState(false);
   const [paraphrasedText, setParaphrasedText] = useState("");
@@ -42,4 +42,4 @@ const paraphraseApi = () => {
   };
 };
 
-export default paraphraseApi;
+export default ParaphraseApi;
