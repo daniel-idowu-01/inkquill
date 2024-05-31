@@ -12,12 +12,12 @@ const Paraphrase = () => {
         </p>
         <p className="text-justify md:text-left my-5 text-lg opacity-70">
           Paraphrasing is the art of expressing an idea in your own words while
-          maintaining its essence. It's like putting information into a new
+          maintaining its essence. It&apos;s like putting information into a new
           language to showcase your understanding. Instead of simply repeating
           what someone else has said, you reframe it. Paraphrasing is a helpful
           skill in writing because it lets you present information in your own
-          way without copying directly from the source. It's a way to use your
-          own voice to discuss someone else's ideas, which comes in handy,
+          way without copying directly from the source. It&apos;s a way to use your
+          own voice to discuss someone else&apos;s ideas, which comes in handy,
           especially when working on projects to steer clear of plagiarism.
         </p>
         <div className="bg-azure-blue md:bg-transparent w-fit rounded-md">

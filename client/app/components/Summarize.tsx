@@ -14,8 +14,8 @@ const Summarize = () => {
         <p className="text-justify md:text-left my-5 text-lg">
           InkQuill utilizes advanced artificial intelligence to condense your
           lengthy notes into concise summaries. We appreciate that learning
-          isn't just about amassing information, but also about understanding it
-          deeply. With InkQuill's intelligent summarization feature, your notes
+          isn&apos;t just about amassing information, but also about understanding it
+          deeply. With InkQuill&apos;s intelligent summarization feature, your notes
           are distilled into key points, ensuring that your study sessions are
           both targeted and productive.
         </p>
