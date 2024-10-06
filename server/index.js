@@ -14,32 +14,32 @@ const cohere = new CohereClient({
 app.use(cors());
 app.use(express.json());
 
-app.post("/api/summarize", (req, res) => {
-  (async () => {
-    try {
-      const summarize = await cohere.summarize({
-        text: req.body.text,
-      });
-      res.json({ summarize });
-      res.end();
-    } catch (error) {
-      res.json({ error });
-    }
-  })();
+app.post("/api/summarize", async (req, res, next) => {
+  try {
+    const summarize = await cohere.summarize({
+      text: req.body.text,
+    });
+    return res.status(200).json({ success: true, summarize });
+  } catch (error) {
+    next(error);
+  }
 });
 
-app.post("/api/paraphrase", (req, res) => {
-  (async () => {
-    try {
-      const generate = await cohere.generate({
-        prompt: `Paraphrase this text: ${req.body.text}`,
-      });
-      res.json({ generate });
-      res.end();
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+app.post("/api/paraphrase", async (req, res, next) => {
+  try {
+    const generate = await cohere.generate({
+      prompt: `Paraphrase this text: ${req.body.text}`,
+    });
+    return res.status(200).json({ success: true, generate });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.use((err, req, res, next) => {
+  let statusCode = err.statusCode || 500;
+  let message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({ success: false, statusCode, message });
 });
 
 // at the end of the file

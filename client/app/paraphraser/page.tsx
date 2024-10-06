@@ -4,7 +4,7 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
-import ParaphraseApi from './ParaphraseApi';
+import ParaphraseApi from "./ParaphraseApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
 
@@ -50,7 +50,7 @@ const Paraphraser = () => {
           </span>
         </div>
       )}
-      
+
       <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}

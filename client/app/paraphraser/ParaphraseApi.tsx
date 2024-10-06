@@ -19,7 +19,7 @@ const ParaphraseApi = () => {
     // Make the POST request
     axios
       .post(
-        "https://inkquill.onrender.com/api/paraphrase",
+        process.env.PARAPHRASE_API || "",
         JSON.stringify(apiData),
         { headers }
       )

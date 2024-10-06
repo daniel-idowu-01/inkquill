@@ -25,7 +25,7 @@ const SummarizeApi = () => {
       // Make the POST request
       axios
         .post(
-          "https://inkquill.onrender.com/api/summarize",
+          process.env.SUMMARIZE_API || "",
           JSON.stringify(apiData),
           {
             headers,

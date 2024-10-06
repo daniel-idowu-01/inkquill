@@ -4,12 +4,18 @@ import styles from "./AnimatedText.module.css";
 
 interface AnimatedTextProps {
   text: string;
-  delay: number
+  delay: number;
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 50 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const words = text.split(" ");
+
+  const removeLastWord = (text: String) => {
+    const words = text.split(" ");
+    words.pop();
+    return words.join(" ");
+  };
 
   useEffect(() => {
     let index = 0;
@@ -24,7 +30,9 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 50 }) => {
     return () => clearInterval(interval);
   }, [text, delay]);
 
-  return <span className={styles.animatedText}>{displayedText}</span>;
+  return (
+    <span className={styles.animatedText}>{removeLastWord(displayedText)}</span>
+  );
 };
 
 export default AnimatedText;

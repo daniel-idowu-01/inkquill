@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 const UseOcrApi = () => {
   const { setData } = useClientStore();
   const router = useRouter();
-  const apiKey = process.env.OCR_API_KEY ?? "";
+  const apiKey = process.env.OCR_API_KEY || "";
   const [fileUrl, setFileUrl] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const UseOcrApi = () => {
 
   const getText = async () => {
     setIsLoading(true);
-    await fetch("https://api.ocr.space/parse/image", requestOptions)
+    await fetch(process.env.OCR_API ?? "", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         const parsedData = JSON.parse(result);
@@ -41,7 +41,7 @@ const UseOcrApi = () => {
         router.push("/summarizer/paste-text");
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error: ", error);
         setIsLoading(false);
       });
   };
