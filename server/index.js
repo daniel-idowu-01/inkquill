@@ -19,6 +19,7 @@ app.post("/api/summarize", async (req, res, next) => {
     const summarize = await cohere.summarize({
       text: req.body.text,
     });
+    console.log("summarize", summarize)
     return res.status(200).json({ success: true, summarize });
   } catch (error) {
     next(error);
@@ -30,6 +31,7 @@ app.post("/api/paraphrase", async (req, res, next) => {
     const generate = await cohere.generate({
       prompt: `Paraphrase this text: ${req.body.text}`,
     });
+    console.log("generate", generate)
     return res.status(200).json({ success: true, generate });
   } catch (error) {
     next(error);
@@ -44,5 +46,5 @@ app.use((err, req, res, next) => {
 
 // at the end of the file
 app.listen(8000, () => {
-  console.log("Port is listening...");
+  console.log("Port is listening on port 8000...");
 });

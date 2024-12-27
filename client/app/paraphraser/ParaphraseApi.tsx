@@ -19,7 +19,9 @@ const ParaphraseApi = () => {
     // Make the POST request
     axios
       .post(
-        process.env.PARAPHRASE_API || "",
+        process.env.NODE_ENV == "production"
+          ? process.env.PARAPHRASE_API || ""
+          : "http://localhost:8000/api/paraphrase",
         JSON.stringify(apiData),
         { headers }
       )

@@ -32,7 +32,7 @@ const UseOcrApi = () => {
 
   const getText = async () => {
     setIsLoading(true);
-    await fetch(process.env.OCR_API ?? "", requestOptions)
+    await fetch(process.env.OCR_API || "", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         const parsedData = JSON.parse(result);

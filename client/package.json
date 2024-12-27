@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=development next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "cross-env NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "express": "^4.19.2",
     "framer-motion": "^11.2.6",
     "lucide-react": "^0.376.0",
-    "next": "14.2.3", 
+    "next": "14.2.3",
     "nodemon": "^3.1.0",
     "ocr-space-api": "^1.0.1",
     "ocr-space-api-alt2": "^2.0.1",
@@ -34,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
