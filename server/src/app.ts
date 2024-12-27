@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRoute from "./routes/user.route";
+import { authRoute, userRoute } from "./routes";
 
 dotenv.config();
 
@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("App is running!");
 });
 
+app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 
 app.use((err: AppError, req: Request, res: Response, next: NextFunction) => {
