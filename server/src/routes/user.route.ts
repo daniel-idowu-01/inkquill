@@ -8,8 +8,8 @@ import { authToken } from "../middleware/auth";
 
 const router = expressRouter();
 
-router.post("/paraphrase"/* , authToken */, handleParaphrase);
-router.post("/summarize"/* , authToken */, handleSummarize);
-router.post("/change-password"/* , authToken */, changePassword);
+router.post("/paraphrase" /* , authToken */, handleParaphrase);
+router.post("/summarize" /* , authToken */, handleSummarize);
+router.post("/change-password" /* , authToken */, changePassword);
 
 export default router;
