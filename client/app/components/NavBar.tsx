@@ -53,8 +53,8 @@ const NavBar = () => {
       </article>
 
       <div className="hidden md:block">
-        <Link href="/contact-us">
-          <Button whiteBg={false} label="Contact Us" />
+        <Link href="/login">
+          <Button whiteBg={false} label="Login" />
         </Link>
       </div>
 
