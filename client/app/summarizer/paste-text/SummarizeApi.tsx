@@ -22,24 +22,22 @@ const SummarizeApi = () => {
       setSummarizeLoading(false);
     } else {
       setErrorLength(false);
-      // Make the POST request
+      
       axios
         .post(
           process.env.NODE_ENV == "production"
             ? process.env.SUMMARIZE_API || ""
-            : "http://localhost:8000/api/summarize",
+            : "http://localhost:8000/api/user/summarize",
           JSON.stringify(apiData),
           {
             headers,
           }
         )
         .then((response) => {
-          // Handle the response
           setSummarizedText(response.data.summarize.summary);
           setSummarizeLoading(false);
         })
         .catch((error) => {
-          // Handle errors
           console.error("Error making POST request:", error);
           setSummarizeLoading(false);
         });

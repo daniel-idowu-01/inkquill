@@ -16,22 +16,19 @@ const ParaphraseApi = () => {
       "Content-Type": "application/json",
     };
 
-    // Make the POST request
     axios
       .post(
         process.env.NODE_ENV == "production"
           ? process.env.PARAPHRASE_API || ""
-          : "http://localhost:8000/api/paraphrase",
+          : "http://localhost:8000/api/user/paraphrase",
         JSON.stringify(apiData),
         { headers }
       )
       .then((response) => {
-        // Handle the response
         setParaphrasedText(response.data.generate.generations[0].text);
         setParaphraseLoading(false);
       })
       .catch((error) => {
-        // Handle errors
         console.error("Error making POST request:", error);
         setParaphraseLoading(false);
       });
