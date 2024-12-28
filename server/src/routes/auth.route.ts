@@ -1,5 +1,9 @@
 import expressRouter from "express";
-import { createUser, login, confirmEmail } from "../controllers/auth.controller";
+import {
+  createUser,
+  login,
+  confirmEmail,
+} from "../controllers/auth.controller";
 
 const router = expressRouter();
 
