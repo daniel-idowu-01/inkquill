@@ -17,7 +17,7 @@ const Upload = () => {
 
   // upload file function
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const uploadedFile = event.target.files?.[0]; // Null check
+    const uploadedFile = event.target.files?.[0];
     // Check if uploadedFile is defined
     if (uploadedFile) {
       setFileLoading(true);
@@ -42,9 +42,6 @@ const Upload = () => {
 
   return (
     <main>
-      <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
-        <NavBar />
-      </section>
       <section className="flex items-center justify-center gap-5 py-10">
         <Link
           href="/summarizer"

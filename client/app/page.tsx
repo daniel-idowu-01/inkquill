@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <main className="md:bg-cotton-white">
       <section className="text-cotton-white md:text-black bg-azure-blue md:bg-cotton-white p-7 md:px-10 lg:px-14 rounded-br-[2rem] h-svh md:h-fit">
-        <NavBar />
         <Hero />
       </section>
 

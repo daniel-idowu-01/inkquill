@@ -26,9 +26,6 @@ const Paraphraser = () => {
 
   return (
     <main>
-      <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
-        <NavBar />
-      </section>
       <section className="flex items-center justify-center gap-5 py-10">
         <Link href="/summarizer">Summarize</Link>
         <Link

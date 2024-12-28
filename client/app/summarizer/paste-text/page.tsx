@@ -26,9 +26,6 @@ const PasteText = () => {
   };
   return (
     <main>
-      <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
-        <NavBar />
-      </section>
       <section className="flex items-center justify-center gap-5 pt-10 pb-5">
         <Link
           href="/summarizer"

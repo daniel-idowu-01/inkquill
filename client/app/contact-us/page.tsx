@@ -7,10 +7,6 @@ import Button from "../ui/Button";
 const ContactUs = () => {
   return (
     <div>
-      <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
-        <NavBar />
-      </section>
-
       <section className="p-10 lg:p-20 text-center w-[90%] lg:w-[60%] mx-auto">
         <p className="text-black text-2xl md:text-4xl tracking-wide mb-1">
           Contact <span className="text-azure-blue font-semibold">Us</span>

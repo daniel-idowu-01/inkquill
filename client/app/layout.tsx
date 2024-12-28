@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { NavBar } from "./components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='kanit-regular'>{children}</body>
+      <body className="kanit-regular">
+        <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
+          <NavBar />
+        </section>
+        {children}
+      </body>
     </html>
   );
 }
