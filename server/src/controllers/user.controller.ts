@@ -5,6 +5,9 @@ import { User } from "../models/index";
 import { errorHandler } from "../middleware/errorHandler";
 //import { transporter } from "../utils/emailTransport";
 import { CohereClient } from "cohere-ai";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const apiKey = process.env.COHERE_API_KEY;
 if (!apiKey) {

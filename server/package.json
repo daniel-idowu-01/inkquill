@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "src/index",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon index.js"
+    "dev": "tsx src/index"
   },
   "author": "",
   "license": "ISC",
@@ -30,11 +29,14 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.2",
     "@types/nodemailer": "^6.4.17",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }
