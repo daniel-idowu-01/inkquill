@@ -65,9 +65,9 @@ const NavBar = () => {
       {/* mobile sidebar */}
       <article
         ref={sidebarRef}
-        className={`absolute top-0 ${
+        className={`fixed top-0 ${
           sideBar ? "left-0" : "-left-full"
-        } h-screen bg-cotton-white w-[80%] transition-all md:hidden z-10`}
+        } h-screen bg-cotton-white w-[80%] transition-all md:hidden z-50`}
       >
         <span
           onClick={() => setSideBar(false)}
