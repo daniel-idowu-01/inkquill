@@ -8,7 +8,7 @@ import CurlyArrow from "../ui/icons/CurlyArrow";
 const Hero = () => {
   return (
     <section className="flex flex-col gap-10 justify-between items-center py-10 text-center md:text-left">
-      <article className="text-center w-[60%]">
+      <article className="text-center md:w-[60%]">
         <p
           className="kanit-regular text-5xl lg:text-6xl uppercase"
           style={{ wordSpacing: ".5rem", letterSpacing: "2px" }}

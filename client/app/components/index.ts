@@ -5,7 +5,8 @@ import Paraphrase from "./Paraphrase";
 import FAQs from "./FAQs";
 import Newsletter from "./Newsletter";
 import Footer from "./Footer";
+import ClientLayout from "./ClientLayout";
 
 export {
-  NavBar, Hero, Summarize, Paraphrase, FAQs, Newsletter, Footer
+  NavBar, Hero, Summarize, Paraphrase, FAQs, Newsletter, Footer, ClientLayout
 }
