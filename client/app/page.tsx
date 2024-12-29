@@ -2,7 +2,6 @@
 import { motion, useScroll } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
-  NavBar,
   Hero,
   Summarize,
   Paraphrase,
@@ -59,9 +58,6 @@ export default function Home() {
           className="relative bg-cotton-white rounded-t-[2rem]"
           style={{
             zIndex: isScrolled ? 20 : 10
-          }}
-          animate={{
-            y: isScrolled ? -20 : 0
           }}
           transition={{ duration: 0.3 }}
         >

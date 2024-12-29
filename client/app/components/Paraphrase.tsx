@@ -28,7 +28,7 @@ const Paraphrase = () => {
       </article>
 
       <article className="lg:w-1/2 flex justify-end">
-        <Image src="/images/summarize.png" width={500} height={500} alt="" />
+        <Image src="/images/paraphrase.png" width={500} height={500} alt="" />
       </article>
     </section>
   );

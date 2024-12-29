@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 
 const Footer = () => {
   return (
-    <div className="text-cotton-white bg-azure-blue flex flex-col md:flex-row justify-between gap-14 md:gap-0 p-10 lg:p-20 rounded-tr-3xl rounded-bl-3xl">
+    <div className="text-cotton-white bg-azure-blue flex flex-col md:flex-row justify-between gap-14 md:gap-0 p-10 lg:p-20 rounded-t-3xl">
       <section>
         <p className="text-white text-2xl md:text-4xl tracking-wide">
           Ink
