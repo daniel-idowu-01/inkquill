@@ -40,10 +40,6 @@ const userSchema = new Schema<IUser>(
       enum: ["admin", "user", "tutor"],
       default: "user",
     },
-    roleId: {
-      type: Schema.Types.ObjectId,
-      ref: "Role",
-    },
     isDeleted: {
       type: Boolean,
       default: false,
