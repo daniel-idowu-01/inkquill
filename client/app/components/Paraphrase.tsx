@@ -21,7 +21,7 @@ const Paraphrase = () => {
           especially when working on projects to steer clear of plagiarism.
         </p>
         <div className="bg-azure-blue md:bg-transparent w-fit rounded-md">
-          <Link href="/summarizer">
+          <Link href="/paraphraser">
             <Button whiteBg={false} label="Get Started" />
           </Link>
         </div>
