@@ -4,7 +4,7 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
-import SummarizeApi from '@/app/summarizer/paste-text/SummarizeApi';
+import SummarizeApi from "@/app/summarizer/paste-text/SummarizeApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
 
@@ -33,7 +33,12 @@ const PasteText = () => {
         >
           Summarize
         </Link>
-        <Link href="/paraphraser">Paraphrase</Link>
+        <Link
+          href="/paraphraser"
+          className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-colors"
+        >
+          Paraphrase
+        </Link>
       </section>
 
       {/* main content of the page */}
@@ -70,10 +75,10 @@ const PasteText = () => {
       </section>
 
       {errorLength && (
-          <p className="text-red-500 text-sm text-center my-2">
-            Text must be more than 250 words!
-          </p>
-        )}
+        <p className="text-red-500 text-sm text-center my-2">
+          Text must be more than 250 words!
+        </p>
+      )}
 
       <section className="flex justify-center my-5">
         <button

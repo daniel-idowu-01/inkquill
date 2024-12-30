@@ -13,7 +13,12 @@ const Summarizer = () => {
         >
           Summarize
         </Link>
-        <Link href="/paraphraser">Paraphrase</Link>
+        <Link
+          href="/paraphraser"
+          className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-colors"
+        >
+          Paraphrase
+        </Link>
       </section>
 
       {/* main content of the page */}

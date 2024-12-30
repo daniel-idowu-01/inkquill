@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavBar } from "@/app/components";
 import { Input } from "@/components/ui/input";
-import UseOcrApi from './UseOcrApi';
+import UseOcrApi from "./UseOcrApi";
 
 const Upload = () => {
   const { fileUrl, setFileUrl, getText } = UseOcrApi();
@@ -49,7 +49,12 @@ const Upload = () => {
         >
           Summarize
         </Link>
-        <Link href="/paraphraser">Paraphrase</Link>
+        <Link
+          href="/paraphraser"
+          className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-colors"
+        >
+          Paraphrase
+        </Link>
       </section>
 
       {/* main content of the page */}
