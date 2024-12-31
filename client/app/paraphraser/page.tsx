@@ -53,7 +53,7 @@ const Paraphraser = () => {
         </div>
       )}
 
-      <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
+      <section className="flex flex-col md:flex-row justify-center h-[26rem] gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}
           name="paste-text"
@@ -62,10 +62,10 @@ const Paraphraser = () => {
           rows={10}
           placeholder="Paste text"
           defaultValue=""
-          className="mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
+          className="hide-scrollbar mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 
-        <article className="overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
+        <article className="hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {paraphrasedText ? (
             <AnimatedText text={paraphrasedText} delay={100} />
           ) : (

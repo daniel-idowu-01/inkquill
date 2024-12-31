@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import UseOcrApi from "./UseOcrApi";
 
 const Upload = () => {
-  const { fileUrl, setFileUrl, getText } = UseOcrApi();
+  const { fileUrl, setFileUrl, getText, error } = UseOcrApi();
   const [fileLoading, setFileLoading] = useState(false);
   const preset_key = process.env.CLOUDINARY_PRESET_KEY ?? "";
   const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
@@ -72,19 +72,21 @@ const Upload = () => {
           <Input
             type="file"
             onChange={handleFileChange}
-            accept=".pdf"
+            //accept=".pdf"
             className=" border-azure-blue text-azure-blue"
           />
 
           <button
             onClick={getText}
-            disabled={fileLoading}
+            disabled={!fileUrl || fileLoading}
             className={`${
-              fileLoading && "opacity-50"
+              !fileUrl || fileLoading && "opacity-50"
             } bg-cotton-white md:bg-azure-blue text-azure-blue md:text-cotton-white hover:text-cotton-white md:hover:text-azure-blue px-6 py-3 rounded-md border border-azure-blue hover:bg-azure-blue md:hover:bg-transparent transition-all font-[550] mx-auto`}
           >
             {fileLoading ? "Uploading..." : "Upload File"}
           </button>
+
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
         </article>
       </section>
     </main>

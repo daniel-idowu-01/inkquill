@@ -7,6 +7,7 @@ const UseOcrApi = () => {
   const router = useRouter();
   const apiKey = process.env.OCR_API_KEY || "";
   const [fileUrl, setFileUrl] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
   // form info
@@ -35,8 +36,12 @@ const UseOcrApi = () => {
     await fetch(process.env.OCR_API || "", requestOptions)
       .then((response) => response.text())
       .then((result) => {
+        const parsedResult = JSON.parse(result);
+        if(parsedResult.IsErroredOnProcessing) {
+          setError("Error processing file! File size exceeds the maximum size limit. Maximum size limit 1024 KB");
+        }
         const parsedData = JSON.parse(result);
-        setData(parsedData.ParsedResults[0].ParsedText);
+        setData(parsedData?.ParsedResults[0].ParsedText);
         setIsLoading(false);
         router.push("/summarizer/paste-text");
       })
@@ -46,7 +51,7 @@ const UseOcrApi = () => {
       });
   };
 
-  return { getText, setFileUrl, fileUrl, isLoading };
+  return { getText, setFileUrl, fileUrl, isLoading, error };
 };
 
 export default UseOcrApi;
