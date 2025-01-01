@@ -5,10 +5,12 @@ import Button from "../ui/Button";
 import { links } from "../data/data";
 import Hamburger from "../ui/icons/Hamburger";
 import Cancel from "../ui/icons/Cancel";
+import User from "../ui/icons/User";
 
 const NavBar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const [sideBar, setSideBar] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // make it a global state
 
   // to hide sidebar when clicking outside of the sidebar
   useEffect(() => {
@@ -52,11 +54,11 @@ const NavBar = () => {
         ))}
       </article>
 
-      <div className="hidden md:block">
+      {isAuthenticated ? <User /> :<div className="hidden md:block">
         <Link href="/login">
           <Button whiteBg={false} label="Login" />
         </Link>
-      </div>
+      </div>}
 
       <div className="md:hidden" onClick={handleSideBar}>
         <Hamburger />
