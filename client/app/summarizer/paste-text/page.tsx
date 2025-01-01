@@ -7,6 +7,7 @@ import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
 import SummarizeApi from "@/app/summarizer/paste-text/SummarizeApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
+import CopyToClipboard from "@/app/components/Clipboard";
 
 const PasteText = () => {
   const { data, setData } = useClientStore();
@@ -65,12 +66,15 @@ const PasteText = () => {
           className="hide-scrollbar mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 
-        <article className="hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
+        <article className="relative hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {summarizedText ? (
             <AnimatedText text={summarizedText} delay={100} />
           ) : (
             "Summarized text"
           )}
+          <span className="absolute bottom-2 right-2">
+            <CopyToClipboard text={summarizedText} />
+          </span>
         </article>
       </section>
 

@@ -34,7 +34,7 @@ const SummarizeApi = () => {
           }
         )
         .then((response) => {
-          setSummarizedText(response.data.summarize.summary);
+          setSummarizedText(response.data.summarize);
           setSummarizeLoading(false);
         })
         .catch((error) => {

@@ -25,7 +25,8 @@ const ParaphraseApi = () => {
         { headers }
       )
       .then((response) => {
-        setParaphrasedText(response.data.generate.generations[0].text);
+        let paragraphs = response.data.generate;
+        setParaphrasedText(paragraphs);
         setParaphraseLoading(false);
       })
       .catch((error) => {

@@ -7,6 +7,7 @@ import AnimatedText from "../components/AnimatedText/AnimatedText";
 import ParaphraseApi from "./ParaphraseApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
+import CopyToClipboard from "../components/Clipboard";
 
 const Paraphraser = () => {
   const { data, setData } = useClientStore();
@@ -61,16 +62,19 @@ const Paraphraser = () => {
           cols={30}
           rows={10}
           placeholder="Paste text"
-          defaultValue=""
+          defaultValue={data}
           className="hide-scrollbar mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 
-        <article className="hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
+        <article className="relative hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {paraphrasedText ? (
             <AnimatedText text={paraphrasedText} delay={100} />
           ) : (
             "Paraphrased text"
           )}
+          <span className="absolute bottom-2 right-2">
+            <CopyToClipboard text={paraphrasedText} />
+          </span>
         </article>
       </section>
 
