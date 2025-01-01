@@ -15,13 +15,7 @@ export const validateCreateUser = (user: User): ValidationResult => {
   const schema = Joi.object({
     username: Joi.string().required(),
     email: Joi.string().email().required(),
-    password: Joi.string()
-      .pattern(
-        new RegExp(
-          /^(?=.*[0-9])(?=.*[!@#$%^&*?_\-.,?!:;'“”()\[\]{}+\-×*÷\/=$&*@#%^_|/<>=])[a-zA-Z0-9!@#$%^&*?_\-.,?!:;'“”()\[\]{}+\-×*÷\/=$&*@#%^_|/<>=]{8,30}$/
-        )
-      )
-      .required(),
+    password: Joi.string().required(),
     roleId: Joi.string().hex().length(24).optional(),
   });
 

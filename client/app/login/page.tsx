@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
+  const router = useRouter()
   const [formInput, setFormInput] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const buttonStyle =
@@ -39,7 +41,7 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem("token", data.message);
           notifySuccess();
-          //navigate("/admin", { replace: true });
+          router.push('/')
         }
       })
       .catch((err) => {
