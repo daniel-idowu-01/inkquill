@@ -4,9 +4,10 @@ import Link from "next/link";
 import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "@/app/components/AnimatedText/AnimatedText";
-import SummarizeApi from '@/app/summarizer/paste-text/SummarizeApi';
+import SummarizeApi from "@/app/summarizer/paste-text/SummarizeApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
+import CopyToClipboard from "@/app/components/Clipboard";
 
 const PasteText = () => {
   const { data, setData } = useClientStore();
@@ -33,7 +34,12 @@ const PasteText = () => {
         >
           Summarize
         </Link>
-        <Link href="/paraphraser">Paraphrase</Link>
+        <Link
+          href="/paraphraser"
+          className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-colors"
+        >
+          Paraphrase
+        </Link>
       </section>
 
       {/* main content of the page */}
@@ -48,7 +54,7 @@ const PasteText = () => {
         </div>
       )}
 
-      <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
+      <section className="flex flex-col md:flex-row justify-center h-[26rem] gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}
           name="paste-text"
@@ -57,23 +63,26 @@ const PasteText = () => {
           rows={10}
           placeholder="Paste text"
           defaultValue={data}
-          className="mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
+          className="hide-scrollbar mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 
-        <article className="overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
+        <article className="relative hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {summarizedText ? (
             <AnimatedText text={summarizedText} delay={100} />
           ) : (
             "Summarized text"
           )}
+          <span className="absolute bottom-2 right-2">
+            <CopyToClipboard text={summarizedText} />
+          </span>
         </article>
       </section>
 
       {errorLength && (
-          <p className="text-red-500 text-sm text-center my-2">
-            Text must be more than 250 words!
-          </p>
-        )}
+        <p className="text-red-500 text-sm text-center my-2">
+          Text must be more than 250 words!
+        </p>
+      )}
 
       <section className="flex justify-center my-5">
         <button

@@ -7,6 +7,7 @@ import AnimatedText from "../components/AnimatedText/AnimatedText";
 import ParaphraseApi from "./ParaphraseApi";
 import Speaker from "@/app/ui/icons/Speaker";
 import { speak } from "@/app/utils/TextToSpeech";
+import CopyToClipboard from "../components/Clipboard";
 
 const Paraphraser = () => {
   const { data, setData } = useClientStore();
@@ -27,7 +28,12 @@ const Paraphraser = () => {
   return (
     <main>
       <section className="flex items-center justify-center gap-5 py-10">
-        <Link href="/summarizer">Summarize</Link>
+        <Link
+          href="/summarizer"
+          className="border border-azure-blue text-azure-blue hover:bg-azure-blue hover:text-cotton-white px-4 py-3 rounded-md transition-colors"
+        >
+          Summarize
+        </Link>
         <Link
           href="/paraphraser"
           className="bg-azure-blue text-cotton-white px-4 py-3 rounded-md"
@@ -48,7 +54,7 @@ const Paraphraser = () => {
         </div>
       )}
 
-      <section className="flex flex-col md:flex-row justify-center h-80 gap-10">
+      <section className="flex flex-col md:flex-row justify-center h-[26rem] gap-10">
         <textarea
           onChange={(e) => setData(e.target.value)}
           name="paste-text"
@@ -56,16 +62,19 @@ const Paraphraser = () => {
           cols={30}
           rows={10}
           placeholder="Paste text"
-          defaultValue=""
-          className="mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
+          defaultValue={data}
+          className="hide-scrollbar mx-auto md:mx-0 border-2 border-azure-blue border-dashed w-[90%] md:w-[40%] focus:outline-azure-blue p-2 rounded-md"
         ></textarea>
 
-        <article className="overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
+        <article className="relative hide-scrollbar overflow-y-scroll mx-auto md:mx-0 bg-azure-blue text-cotton-white w-[90%] md:w-[40%] h-96 md:h-full rounded-md p-2">
           {paraphrasedText ? (
             <AnimatedText text={paraphrasedText} delay={100} />
           ) : (
             "Paraphrased text"
           )}
+          <span className="absolute bottom-2 right-2">
+            <CopyToClipboard text={paraphrasedText} />
+          </span>
         </article>
       </section>
 

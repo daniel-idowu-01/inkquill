@@ -37,8 +37,8 @@ const handleSummarize = async (
     const summarize = await cohere.summarize({
       text: req.body.text,
     });
-    console.log("Summarize result:", summarize);
-    res.status(200).json({ success: true, summarize });
+    console.log("Summarize result:", summarize.summary);
+    res.status(200).json({ success: true, summarize: summarize.summary });
   } catch (error) {
     console.error("Error in handleSummarize:", error);
     next(error);
@@ -54,8 +54,7 @@ const handleParaphrase = async (
     const generate = await cohere.generate({
       prompt: `Paraphrase this text: ${req.body.text}`,
     });
-    console.log("Generate result:", generate);
-    res.status(200).json({ success: true, generate });
+    res.status(200).json({ success: true, generate: generate.generations[0].text });
   } catch (error) {
     console.error("Error in handleParaphrase:", error);
     next(error);
