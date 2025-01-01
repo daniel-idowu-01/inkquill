@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-import Spinner from "../ui/icons/Spinner/Spinner";
 
 const SignUp = () => {
   const [formInput, setFormInput] = useState({});
@@ -11,7 +10,6 @@ const SignUp = () => {
   const buttonStyle =
     "border bg-button p-3 rounded-md hover:bg-opacity-80 transition-all";
   const notifyCatchError = (error: String) => toast.warn(error);
-  const notifySuccess = () => toast.success("You are logged in!");
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
@@ -21,7 +19,7 @@ const SignUp = () => {
     e.preventDefault();
 
     setIsLoading(true);
-    fetch(`http://localhost:8000/api/auth/signup`, {
+    fetch(`http://localhost:8000/api/auth`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,13 +35,8 @@ const SignUp = () => {
         return body;
       })
       .then((data) => {
-        if (data.statusCode == 400) {
-          notifyCatchError(`Wrong credentials!`);
-        }
-
         if (data.success) {
           localStorage.setItem("token", data.message);
-          notifySuccess();
           //navigate("/admin", { replace: true });
         }
       })
@@ -127,11 +120,11 @@ const SignUp = () => {
                 className={`${
                   isLoading
                     ? "bg-[#e6e6e6]"
-                    : "text-azure-blue hover:bg-opacity-85"
-                } bg-azure-blue flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm`}
+                    : "text-azure-blue hover:bg-opacity-85 bg-azure-blue"
+                } flex w-full justify-center items-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm`}
+                style={{ height: "40px" }}
               >
-                {isLoading && <Spinner />}
-                {!isLoading && "Sign Up"}
+                {isLoading ? "Creating user..." : "Sign Up"}
               </button>
             </div>
           </form>

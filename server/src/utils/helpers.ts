@@ -13,6 +13,7 @@ interface ValidationResult {
 
 export const validateCreateUser = (user: User): ValidationResult => {
   const schema = Joi.object({
+    username: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string()
       .pattern(

@@ -10,6 +10,7 @@ import { validateCreateUser } from "../utils/helpers.js";
 
 // Type definitions for request bodies
 interface CreateUserRequest {
+  username: string;
   email: string;
   password: string;
 }
@@ -26,7 +27,7 @@ const createUser = async (
 ): Promise<void> => {
   let url: string | undefined;
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
     const { valid, message } = validateCreateUser(req.body);
     if (!valid) {
@@ -73,6 +74,7 @@ const createUser = async (
     }
 
     await User.create({
+      username,
       email,
       password: hashedPassword,
     });
