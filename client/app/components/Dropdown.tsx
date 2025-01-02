@@ -71,7 +71,7 @@ const Dropdown = () => {
               tabIndex={-1}
               id="menu-item-0"
             >
-              Dashboard
+              Profile
             </a>
             <a
               href="#"
@@ -80,7 +80,7 @@ const Dropdown = () => {
               tabIndex={-1}
               id="menu-item-1"
             >
-              Settings
+              Chat With My Note
             </a>
             <a
               href="#"
@@ -89,7 +89,7 @@ const Dropdown = () => {
               tabIndex={-1}
               id="menu-item-2"
             >
-              Earnings
+              Settings
             </a>
             <a
               href="#"

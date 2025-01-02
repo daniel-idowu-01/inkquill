@@ -55,9 +55,6 @@ const NavBar = () => {
         ))}
       </article>
 
-      
-
-      {/* <User /> */}
       {isAuthenticated ? (
         <Dropdown />
       ) : (
