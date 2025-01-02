@@ -6,6 +6,7 @@ import { links } from "../data/data";
 import Hamburger from "../ui/icons/Hamburger";
 import Cancel from "../ui/icons/Cancel";
 import User from "../ui/icons/User";
+import Dropdown from "./Dropdown";
 
 const NavBar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
@@ -54,11 +55,18 @@ const NavBar = () => {
         ))}
       </article>
 
-      {isAuthenticated ? <User /> :<div className="hidden md:block">
-        <Link href="/login">
-          <Button whiteBg={false} label="Login" />
-        </Link>
-      </div>}
+      
+
+      {/* <User /> */}
+      {isAuthenticated ? (
+        <Dropdown />
+      ) : (
+        <div className="hidden md:block">
+          <Link href="/login">
+            <Button whiteBg={false} label="Login" />
+          </Link>
+        </div>
+      )}
 
       <div className="md:hidden" onClick={handleSideBar}>
         <Hamburger />
