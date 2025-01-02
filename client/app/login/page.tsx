@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-import Spinner from "../ui/icons/Spinner/Spinner";
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
+  const router = useRouter()
   const [formInput, setFormInput] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const buttonStyle =
@@ -37,14 +38,10 @@ const Login = () => {
         return body;
       })
       .then((data) => {
-        if (data.statusCode == 400) {
-          notifyCatchError(`Wrong credentials!`);
-        }
-
         if (data.success) {
           localStorage.setItem("token", data.message);
           notifySuccess();
-          //navigate("/admin", { replace: true });
+          router.push('/')
         }
       })
       .catch((err) => {
@@ -116,11 +113,13 @@ const Login = () => {
                 disabled={isLoading}
                 type="submit"
                 className={`${
-                  isLoading ? "bg-[#e6e6e6]" : "text-azure-blue hover:bg-opacity-85"
-                } bg-azure-blue flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm`}
+                  isLoading
+                    ? "bg-[#e6e6e6]"
+                    : "text-azure-blue hover:bg-opacity-85 bg-azure-blue"
+                } flex w-full justify-center items-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm`}
+                style={{ height: "40px" }}
               >
-                {isLoading && <Spinner />}
-                {!isLoading && "Sign in"}
+                {isLoading ? "Logging in..." : "Sign in"}
               </button>
             </div>
           </form>

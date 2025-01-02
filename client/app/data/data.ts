@@ -4,16 +4,16 @@ const links = [
     link: "/",
   },
   {
-    title: "About",
-    link: "/#about",
-  },
-  {
     title: "Features",
     link: "/#features",
   },
   {
     title: "FAQs",
     link: "/#faqs",
+  },
+  {
+    title: "About",
+    link: "/#about",
   },
 ];
 
