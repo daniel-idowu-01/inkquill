@@ -1,13 +1,31 @@
 "use client";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import User from "../ui/icons/User";
 
 const Dropdown = () => {
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
   };
+
+  const closeDropdown = (e: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(e.target as Node)
+    ) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeDropdown);
+
+    return () => {
+      document.removeEventListener("mousedown", closeDropdown);
+    };
+  }, []);
   return (
     <div className="relative inline-block text-left">
       <button
@@ -43,6 +61,7 @@ const Dropdown = () => {
           aria-orientation="vertical"
           aria-labelledby="menu-button"
           tabIndex={-1}
+          ref={dropdownRef}
         >
           <div className="py-1" role="none">
             <a
