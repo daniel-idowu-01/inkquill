@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
 import HeroImage from "../ui/hero-image/hero-image.svg";
-import CurlyArrow from "../ui/icons/CurlyArrow";
 
 const Hero = () => {
   return (

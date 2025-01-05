@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import User from "../ui/icons/User";
+import { User } from "../ui/icons";
+import { dropdownLinks } from "../data/data";
 
 const Dropdown = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -64,42 +66,19 @@ const Dropdown = () => {
           ref={dropdownRef}
         >
           <div className="py-1" role="none">
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-0"
-            >
-              Profile
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-1"
-            >
-              Chat With My Note
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-2"
-            >
-              Settings
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-3"
-            >
-              Sign out
-            </a>
+            {dropdownLinks.map((link, index) => (
+              <section key={index} className="px-4 py-2 flex items-center gap-1 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer">
+                <User />
+                <Link
+                  href="#"
+                  role="menuitem"
+                  tabIndex={-1}
+                  id={`menu-item-${index}`}
+                >
+                  {link.title}
+                </Link>
+              </section>
+            ))}
           </div>
         </div>
       )}

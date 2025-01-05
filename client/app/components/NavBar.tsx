@@ -3,9 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { links } from "../data/data";
-import Hamburger from "../ui/icons/Hamburger";
-import Cancel from "../ui/icons/Cancel";
-import User from "../ui/icons/User";
+import { Hamburger, Cancel} from '../ui/icons'
 import Dropdown from "./Dropdown";
 
 const NavBar = () => {

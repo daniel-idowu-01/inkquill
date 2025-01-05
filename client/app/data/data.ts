@@ -1,3 +1,4 @@
+import {User}  from "../ui/icons";
 const links = [
   {
     title: "Home",
@@ -40,4 +41,32 @@ const faqs = [
   },
 ];
 
-export { links, faqs };
+const dropdownLinks = [
+  {
+    title: "Profile",
+    link: "/",
+    icon: ""
+  },
+  {
+    title: "Chat With My Note",
+    link: "/",
+    icon: ""
+  },
+  {
+    title: "History",
+    link: "/",
+    icon: ""
+  },
+  {
+    title: "Settings",
+    link: "/",
+    icon: ""
+  },
+  {
+    title: "Sign out",
+    link: "/",
+    icon: ""
+  },
+]
+
+export { links, faqs, dropdownLinks };
