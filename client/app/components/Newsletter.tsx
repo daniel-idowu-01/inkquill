@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import Button from "../ui/Button";
-import Email from "../ui/icons/Email";
+import { Email } from "../ui/icons";
 
 const Newsletter = () => {
   return (

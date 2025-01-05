@@ -5,7 +5,7 @@ import { NavBar } from "@/app/components";
 import { useClientStore } from "@/store";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import ParaphraseApi from "./ParaphraseApi";
-import Speaker from "@/app/ui/icons/Speaker";
+import { Speaker } from "@/app/ui/icons";
 import { speak } from "@/app/utils/TextToSpeech";
 import CopyToClipboard from "../components/Clipboard";
 
