@@ -67,7 +67,7 @@ const Dropdown = () => {
         >
           <div className="py-1" role="none">
             {dropdownLinks.map((link, index) => (
-              <section className="px-4 py-2 flex items-center gap-1 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer">
+              <section key={index} className="px-4 py-2 flex items-center gap-1 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer">
                 <User />
                 <Link
                   href="#"
