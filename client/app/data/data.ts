@@ -40,4 +40,10 @@ const faqs = [
   },
 ];
 
+const dropdownLinks = [
+  {
+    
+  }
+]
+
 export { links, faqs };

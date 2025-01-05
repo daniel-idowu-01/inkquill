@@ -64,15 +64,18 @@ const Dropdown = () => {
           ref={dropdownRef}
         >
           <div className="py-1" role="none">
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-0"
-            >
-              Profile
-            </a>
+            <section className="px-4 py-2 flex items-center gap-1">
+              <User />
+              <a
+                href="#"
+                className="block  text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+                tabIndex={-1}
+                id="menu-item-0"
+              >
+                Profile
+              </a>
+            </section>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
