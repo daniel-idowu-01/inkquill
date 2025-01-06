@@ -6,6 +6,9 @@ import Email from "./Email";
 import Hamburger from "./Hamburger";
 import Speaker from "./Speaker";
 import User from "./User";
+import Chat from "./Chat";
+import Settings from "./Settings";
+import { History, LogOut } from "lucide-react";
 
 export {
   Spinner,
@@ -16,4 +19,8 @@ export {
   Hamburger,
   Speaker,
   User,
+  Chat,
+  Settings,
+  History,
+  LogOut
 };
