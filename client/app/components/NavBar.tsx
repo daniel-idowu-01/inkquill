@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { links } from "../data/data";
-import { Hamburger, Cancel} from '../ui/icons'
+import { Hamburger, Cancel } from "../ui/icons";
 import Dropdown from "./Dropdown";
 
 const NavBar = () => {
@@ -37,7 +37,7 @@ const NavBar = () => {
     <div className="flex items-center justify-between">
       <Link
         href="/"
-        className="text-white md:text-black text-2xl md:text-4xl tracking-wide"
+        className="text-white md:text-black text-2xl tracking-wide"
       >
         Ink
         <span className="txt-white md:text-azure-blue font-semibold">
@@ -53,15 +53,15 @@ const NavBar = () => {
         ))}
       </article>
 
-      {isAuthenticated ? (
-        <Dropdown />
-      ) : (
-        <div className="hidden md:block">
+      <div className="hidden md:block">
+        {isAuthenticated ? (
+          <Dropdown />
+        ) : (
           <Link href="/login">
             <Button whiteBg={false} label="Login" />
           </Link>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="md:hidden" onClick={handleSideBar}>
         <Hamburger />

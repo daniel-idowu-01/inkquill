@@ -45,7 +45,7 @@ const faqs = [
 const dropdownLinks = [
   {
     title: "Profile",
-    link: "/",
+    link: `/profile/id`,
     icon: User,
   },
   {
@@ -58,11 +58,11 @@ const dropdownLinks = [
     link: "/",
     icon: History,
   },
-  {
-    title: "Settings",
-    link: "/",
-    icon: Settings,
-  },
+  // {
+  //   title: "Settings",
+  //   link: "/",
+  //   icon: Settings,
+  // },
   {
     title: "Sign out",
     link: "/",
