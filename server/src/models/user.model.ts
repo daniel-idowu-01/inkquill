@@ -3,6 +3,8 @@ import mongoose, { Schema, Document } from "mongoose";
 // Define an interface for the User document
 export interface IUser extends Document {
   username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   emailVerified: boolean;
@@ -19,6 +21,14 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
+    },
+    firstName: {
+      type: String,
+      lowercase: true,
+    },
+    lastName: {
+      type: String,
       lowercase: true,
     },
     email: {

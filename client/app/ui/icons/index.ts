@@ -8,6 +8,7 @@ import Speaker from "./Speaker";
 import User from "./User";
 import Chat from "./Chat";
 import Settings from "./Settings";
+import Document from "./Document";
 import { History, LogOut } from "lucide-react";
 
 export {
@@ -21,6 +22,7 @@ export {
   User,
   Chat,
   Settings,
+  Document,
   History,
   LogOut
 };
