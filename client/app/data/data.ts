@@ -55,7 +55,7 @@ const dropdownLinks = [
   },
   {
     title: "History",
-    link: "/",
+    link: "/history/id",
     icon: History,
   },
   // {
@@ -65,7 +65,7 @@ const dropdownLinks = [
   // },
   {
     title: "Sign out",
-    link: "/",
+    link: "/logout",
     icon: LogOut,
   },
 ];
