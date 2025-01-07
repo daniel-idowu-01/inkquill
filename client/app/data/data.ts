@@ -65,7 +65,7 @@ const dropdownLinks = [
   // },
   {
     title: "Sign out",
-    link: "/",
+    link: "/logout",
     icon: LogOut,
   },
 ];
