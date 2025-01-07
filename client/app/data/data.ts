@@ -55,7 +55,7 @@ const dropdownLinks = [
   },
   {
     title: "History",
-    link: "/",
+    link: "/history/id",
     icon: History,
   },
   // {
