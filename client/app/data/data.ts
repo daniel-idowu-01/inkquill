@@ -50,7 +50,7 @@ const dropdownLinks = [
   },
   {
     title: "Chat With My Note",
-    link: "/",
+    link: "/chat-with-note",
     icon: Chat,
   },
   {
