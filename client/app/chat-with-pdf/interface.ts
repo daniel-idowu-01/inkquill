@@ -1,0 +1,3 @@
+interface TextAreaFocusEvent {
+  target: HTMLTextAreaElement;
+}
