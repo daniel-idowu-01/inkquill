@@ -3,7 +3,6 @@
 InkQuill is an intelligent tool designed to help students enhance their study sessions by summarizing and paraphrasing notes in images or PDF format.
 
 ---
-
 ## Features
 
 - **PDF Extraction**: Easily upload PDF documents and extract text for further processing.
@@ -12,7 +11,6 @@ InkQuill is an intelligent tool designed to help students enhance their study se
 - **Error Handling**: Provides detailed logs for failed tasks.
 
 ---
-
 ## Tech Stack
 
 - **Backend**: Node.js, Express.js
@@ -21,7 +19,6 @@ InkQuill is an intelligent tool designed to help students enhance their study se
 - **Integration**: Cohere API, OCRSpace
 
 ---
-
 ## Installation
 
 ### Prerequisites
