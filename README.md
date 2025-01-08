@@ -25,6 +25,7 @@ InkQuill is an intelligent tool designed to help students enhance their study se
 
 1. Node.js and npm installed.
 2. MongoDB instance running locally or in the cloud.
+3. Have a Cohere and OCRSpace account
 
 ### Steps
 
