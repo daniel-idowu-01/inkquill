@@ -11,6 +11,12 @@ const NavBar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const [sideBar, setSideBar] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useClientStore();
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;
+
+  if(user && !isAuthenticated) {
+    setIsAuthenticated(true);
+  }
 
   // to hide sidebar when clicking outside of the sidebar
   useEffect(() => {
