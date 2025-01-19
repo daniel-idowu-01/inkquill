@@ -1,6 +1,42 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
+
+interface User {
+  userId: string;
+  token: string;
+}
 
 const Profile = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const { data, error, loading, refetch } = useFetch(
+    "api/user",
+    {
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+    },
+    false
+  );
+
+  // Fetch user data on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
+    refetch();
+  }, []);
+
+  // Refetch data when user changes
+  useEffect(() => {
+    if (user) {
+      refetch();
+    }
+  }, [user]);
+
+  console.log("data", data);
   return (
     <section className="flex justify-center p-5 sm:p-10 text-2xl">
       <form>
@@ -30,6 +66,7 @@ const Profile = () => {
                       name="username"
                       type="text"
                       placeholder="janesmith"
+                      defaultValue={data?.message?.username}
                       className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
                     />
                   </div>
@@ -96,6 +133,7 @@ const Profile = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    defaultValue={data?.message?.email}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-azure-blue sm:text-sm/6"
                   />
                 </div>

@@ -17,6 +17,7 @@ export const authToken = (
 ): void => {
   const header = req.headers["authorization"];
   const token = header && header.split(" ")[1];
+  console.log(`Token: ${token}`);
 
   if (!token) {
     return next(errorHandler(401, "Unauthorized"));
