@@ -38,7 +38,6 @@ const SignUp = () => {
       })
       .then((data) => {
         if (data.success) {
-          localStorage.setItem("token", data.message);
           router.push('/login')
         }
       })

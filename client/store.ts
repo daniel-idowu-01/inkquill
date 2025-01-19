@@ -19,7 +19,7 @@ export const useStore = create<DataProp & SetDataProp>((set) => ({
       localStorage.setItem("dataString", newString);
     }
   },
-  isAuthenticated: true,
+  isAuthenticated: false,
   setIsAuthenticated: (isAuthenticated: boolean) => {
     set({ isAuthenticated });
   },
