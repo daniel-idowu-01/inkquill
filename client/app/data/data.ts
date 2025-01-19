@@ -45,7 +45,7 @@ const faqs = [
 const dropdownLinks = [
   {
     title: "Profile",
-    link: `/profile/id`,
+    link: `/profile`,
     icon: User,
   },
   {
@@ -55,7 +55,7 @@ const dropdownLinks = [
   },
   {
     title: "History",
-    link: "/history/id",
+    link: "/history",
     icon: History,
   },
   // {
