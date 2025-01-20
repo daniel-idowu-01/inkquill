@@ -14,7 +14,7 @@ const NavBar = () => {
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
 
-  if(user && !isAuthenticated) {
+  if (user && !isAuthenticated) {
     setIsAuthenticated(true);
   }
 
