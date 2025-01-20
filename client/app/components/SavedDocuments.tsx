@@ -9,9 +9,8 @@ const SavedDocuments = () => {
       </article>
       <article className="flex items-center p-2 h-[30%]">
         <div>
-
-        <p>File name</p>
-        <p>Date: {new Date().toLocaleDateString()}</p>
+          <p>File name</p>
+          <p>Date: {new Date().toLocaleDateString()}</p>
         </div>
       </article>
     </div>
