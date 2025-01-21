@@ -28,6 +28,12 @@ interface ChangePasswordRequest {
   newPassword: string;
 }
 
+interface UpdateUserRequest {
+  firstName: string;
+  lastName: string;
+  username: string;
+}
+
 const handleSummarize = async (
   req: Request<{}, {}, TextRequestBody>,
   res: Response,
@@ -144,4 +150,40 @@ const fetchUser = async (
   }
 };
 
-export { handleSummarize, handleParaphrase, changePassword, fetchUser };
+const updateUserById = async (
+  req: Request<{}, {}, UpdateUserRequest>,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { id } = req.user as { id: string };
+    const { username, firstName, lastName } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return next(errorHandler(400, "Input valid ID"));
+    }
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        $set: { username, firstName, lastName },
+      },
+      { new: true }
+    );
+    if (!user) {
+      return next(errorHandler(400, "User Not Found!"));
+    }
+
+    res.status(200).json({ success: true, message: user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export {
+  handleSummarize,
+  handleParaphrase,
+  changePassword,
+  fetchUser,
+  updateUserById,
+};
