@@ -51,7 +51,6 @@ const Login = () => {
         if (data.success) {
           setIsAuthenticated(true);
           const decoded = jwtDecode<JwtPayload>(data.message);
-          console.log("decoded", decoded);
           userId = decoded?.id;
           localStorage.setItem("user", JSON.stringify({ userId, token: data.message }));
           notifySuccess();

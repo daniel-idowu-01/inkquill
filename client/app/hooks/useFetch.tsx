@@ -4,6 +4,8 @@ interface User {
   success: boolean;
   message: {
     username: string;
+    firstName: string;
+    lastName: string;
     email: string;
     emailVerified: boolean;
     role: string;
