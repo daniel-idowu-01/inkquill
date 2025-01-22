@@ -113,7 +113,9 @@ const login = async (
       return next(errorHandler(400, "Wrong credentials!"));
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
+      expiresIn: "1d",
+    });
     res.status(200).json({ success: true, message: token });
   } catch (error) {
     next(error);
