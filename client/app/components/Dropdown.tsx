@@ -73,6 +73,7 @@ const Dropdown = () => {
                 role="menuitem"
                 tabIndex={-1}
                 id={`menu-item-${index}`}
+                onClick={() => setIsDropdownOpen(false)}
               >
                 <section className="px-4 py-2 flex items-center gap-1 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer">
                   <span className="text-xs">

@@ -9,5 +9,13 @@ import ClientLayout from "./ClientLayout";
 import Chat from "./Chat";
 
 export {
-  NavBar, Hero, Summarize, Paraphrase, FAQs, Newsletter, Footer, ClientLayout, Chat
-}
+  NavBar,
+  Hero,
+  Summarize,
+  Paraphrase,
+  FAQs,
+  Newsletter,
+  Footer,
+  ClientLayout,
+  Chat,
+};

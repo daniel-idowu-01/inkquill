@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Chat } from "../components";
 
-const ChatWithPDF = () => {
+const ChatWithNote = () => {
   const [message, setMessage] = useState("");
   const [height, setHeight] = useState(40);
 
@@ -73,4 +73,4 @@ const ChatWithPDF = () => {
   );
 };
 
-export default ChatWithPDF;
+export default ChatWithNote;

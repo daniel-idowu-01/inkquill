@@ -1,9 +1,82 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getTokenWithExpiration } from "../utils/token";
+
+interface User {
+  userId: string;
+  token: string;
+}
 
 const Profile = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [formInput, setFormInput] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const notifyCatchError = (error: String) => toast.warn(error);
+  const notifySuccess = () => toast.success("User data updated!");
+  const { data, error, loading, refetch } = useFetch(
+    "api/user",
+    {
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+    },
+    false
+  );
+
+  // Function to handle form input change
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormInput({ ...formInput, [e.target.name]: e.target.value });
+  };
+
+  // Fetch user data on mount
+  useEffect(() => {
+    const storedUser = getTokenWithExpiration();
+    setUser(storedUser);
+
+    refetch();
+  }, []);
+
+  // Refetch data when user changes
+  useEffect(() => {
+    if (user) {
+      refetch();
+    }
+  }, [user]);
+
+  // Function to handle user update
+  const handleUserUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/api/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify(formInput),
+      });
+      setIsLoading(false);
+
+      if (!response.ok) {
+        notifyCatchError(response.statusText);
+      }
+      notifySuccess();
+      console.log("Response:", response);
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error updating user:", error);
+    }
+  };
+
   return (
     <section className="flex justify-center p-5 sm:p-10 text-2xl">
-      <form>
+      <ToastContainer className='text-base' />
+      <form onSubmit={handleUserUpdate}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base/7 font-semibold text-gray-900">Profile</h2>
@@ -30,6 +103,8 @@ const Profile = () => {
                       name="username"
                       type="text"
                       placeholder="janesmith"
+                      onChange={(e) => handleFormChange(e)}
+                      defaultValue={data?.message?.username}
                       className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
                     />
                   </div>
@@ -56,10 +131,12 @@ const Profile = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    id="first-name"
-                    name="first-name"
+                    id="firstName"
+                    name="firstName"
                     type="text"
                     autoComplete="given-name"
+                    onChange={(e) => handleFormChange(e)}
+                    defaultValue={data?.message?.firstName}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-azure-blue sm:text-sm/6"
                   />
                 </div>
@@ -74,10 +151,12 @@ const Profile = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    id="last-name"
-                    name="last-name"
+                    id="lastName"
+                    name="lastName"
                     type="text"
-                    autoComplete="family-name"
+                    autoComplete="lastName"
+                    onChange={(e) => handleFormChange(e)}
+                    defaultValue={data?.message?.lastName}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-azure-blue sm:text-sm/6"
                   />
                 </div>
@@ -96,6 +175,8 @@ const Profile = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    defaultValue={data?.message?.email}
+                    readOnly
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-azure-blue sm:text-sm/6"
                   />
                 </div>
@@ -115,7 +196,7 @@ const Profile = () => {
             type="submit"
             className="rounded-md bg-azure-blue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure-blue"
           >
-            Save
+            {isLoading ? "Saving" : "Save"}
           </button>
         </div>
       </form>

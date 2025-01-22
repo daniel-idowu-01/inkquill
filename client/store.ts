@@ -3,10 +3,12 @@ import { useEffect, useRef } from "react";
 
 interface DataProp {
   data: string;
+  isAuthenticated: boolean;
 }
 
 interface SetDataProp {
   setData: (newString: string) => void;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
 export const useStore = create<DataProp & SetDataProp>((set) => ({
@@ -16,6 +18,10 @@ export const useStore = create<DataProp & SetDataProp>((set) => ({
     if (typeof window !== "undefined") {
       localStorage.setItem("dataString", newString);
     }
+  },
+  isAuthenticated: false,
+  setIsAuthenticated: (isAuthenticated: boolean) => {
+    set({ isAuthenticated });
   },
 }));
 

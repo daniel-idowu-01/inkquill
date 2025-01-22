@@ -16,9 +16,10 @@ const Paraphrase = () => {
           language to showcase your understanding. Instead of simply repeating
           what someone else has said, you reframe it. Paraphrasing is a helpful
           skill in writing because it lets you present information in your own
-          way without copying directly from the source. It&apos;s a way to use your
-          own voice to discuss someone else&apos;s ideas, which comes in handy,
-          especially when working on projects to steer clear of plagiarism.
+          way without copying directly from the source. It&apos;s a way to use
+          your own voice to discuss someone else&apos;s ideas, which comes in
+          handy, especially when working on projects to steer clear of
+          plagiarism.
         </p>
         <div className="bg-azure-blue md:bg-transparent w-fit rounded-md">
           <Link href="/paraphraser">
@@ -28,7 +29,13 @@ const Paraphrase = () => {
       </article>
 
       <article className="lg:w-1/2 flex justify-end">
-        <Image src="/images/paraphrase.png" width={500} height={500} alt="" className="border border-azure-blue rounded-md p-2 pb-0" />
+        <Image
+          src="/images/paraphrase.png"
+          width={500}
+          height={500}
+          alt=""
+          className="border border-azure-blue rounded-md p-2 pb-0"
+        />
       </article>
     </section>
   );

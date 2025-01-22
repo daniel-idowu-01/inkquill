@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { useRouter } from "next/navigation";
+import { removeToken } from "../utils/token";
 
 const Logout = () => {
   const router = useRouter();
@@ -46,7 +47,8 @@ const Logout = () => {
               <button
                 type="button"
                 onClick={() => {
-                  setOpen(false);
+                  // Remove the token and redirect to the home page
+                  removeToken();
                   router.push("/");
                 }}
                 className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"

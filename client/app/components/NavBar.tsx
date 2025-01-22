@@ -5,11 +5,18 @@ import Button from "../ui/Button";
 import { links } from "../data/data";
 import { Hamburger, Cancel } from "../ui/icons";
 import Dropdown from "./Dropdown";
+import { useClientStore } from "@/store";
+import { getTokenWithExpiration } from "../utils/token";
 
 const NavBar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const [sideBar, setSideBar] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // make it a global state
+  const { isAuthenticated, setIsAuthenticated } = useClientStore();
+  const storedUser = getTokenWithExpiration();
+
+  if (storedUser && !isAuthenticated) {
+    setIsAuthenticated(true);
+  }
 
   // to hide sidebar when clicking outside of the sidebar
   useEffect(() => {

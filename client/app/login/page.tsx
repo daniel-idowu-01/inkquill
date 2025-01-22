@@ -1,23 +1,34 @@
 "use client";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
+import { useClientStore } from "@/store";
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
+import { jwtDecode } from "jwt-decode";
+import "react-toastify/dist/ReactToastify.css";
+import { setTokenWithExpiration } from "../utils/token";
+
+interface JwtPayload {
+  id: string;
+}
 
 const Login = () => {
-  const router = useRouter()
+  let userId = null;
+  const router = useRouter();
   const [formInput, setFormInput] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const { isAuthenticated, setIsAuthenticated } = useClientStore();
   const buttonStyle =
     "border bg-button p-3 rounded-md hover:bg-opacity-80 transition-all";
   const notifyCatchError = (error: String) => toast.warn(error);
   const notifySuccess = () => toast.success("You are logged in!");
 
+  // Function to handle form input change
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
   };
 
+  // Function to handle form submission
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -39,9 +50,12 @@ const Login = () => {
       })
       .then((data) => {
         if (data.success) {
-          localStorage.setItem("token", data.message);
+          setIsAuthenticated(true);
+          const decoded = jwtDecode<JwtPayload>(data.message);
+          userId = decoded?.id;
+          setTokenWithExpiration({ userId, token: data.message });
           notifySuccess();
-          router.push('/')
+          router.push("/");
         }
       })
       .catch((err) => {
