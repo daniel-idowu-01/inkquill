@@ -33,9 +33,13 @@ export const getTokenWithExpiration = () => {
 
   // Check if the token has expired
   if (currentTime > data.expiration) {
-    localStorage.removeItem("user"); // Remove expired token
-    return null; // Token is expired
+    localStorage.removeItem("user");
+    return null;
   }
 
   return data; // Return the valid token
+};
+
+export const removeToken = () => {
+  localStorage.removeItem("user");
 };

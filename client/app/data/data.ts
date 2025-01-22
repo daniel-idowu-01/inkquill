@@ -48,16 +48,16 @@ const dropdownLinks = [
     link: `/profile`,
     icon: User,
   },
-  {
-    title: "Chat With My Note",
-    link: "/chat-with-note",
-    icon: Chat,
-  },
-  {
-    title: "History",
-    link: "/history",
-    icon: History,
-  },
+  // {
+  //   title: "Chat With My Note",
+  //   link: "/chat-with-note",
+  //   icon: Chat,
+  // },
+  // {
+  //   title: "History",
+  //   link: "/history",
+  //   icon: History,
+  // },
   // {
   //   title: "Settings",
   //   link: "/",
