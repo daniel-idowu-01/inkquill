@@ -6,6 +6,7 @@ import { useClientStore } from "@/store";
 import Link from "next/link";
 import { jwtDecode } from "jwt-decode";
 import "react-toastify/dist/ReactToastify.css";
+import { setTokenWithExpiration } from "../utils/token";
 
 interface JwtPayload {
   id: string;
@@ -52,7 +53,7 @@ const Login = () => {
           setIsAuthenticated(true);
           const decoded = jwtDecode<JwtPayload>(data.message);
           userId = decoded?.id;
-          localStorage.setItem("user", JSON.stringify({ userId, token: data.message }));
+          setTokenWithExpiration({ userId, token: data.message });
           notifySuccess();
           router.push("/");
         }

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getTokenWithExpiration } from "../utils/token";
 
 interface User {
   userId: string;
@@ -32,10 +33,8 @@ const Profile = () => {
 
   // Fetch user data on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const storedUser = getTokenWithExpiration();
+    setUser(storedUser);
 
     refetch();
   }, []);

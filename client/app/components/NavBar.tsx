@@ -6,15 +6,15 @@ import { links } from "../data/data";
 import { Hamburger, Cancel } from "../ui/icons";
 import Dropdown from "./Dropdown";
 import { useClientStore } from "@/store";
+import { getTokenWithExpiration } from "../utils/token";
 
 const NavBar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const [sideBar, setSideBar] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useClientStore();
-  const storedUser = localStorage.getItem("user");
-  const user = storedUser ? JSON.parse(storedUser) : null;
+  const storedUser = getTokenWithExpiration();
 
-  if (user && !isAuthenticated) {
+  if (storedUser && !isAuthenticated) {
     setIsAuthenticated(true);
   }
 
