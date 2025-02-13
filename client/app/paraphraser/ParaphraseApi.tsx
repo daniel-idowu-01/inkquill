@@ -20,7 +20,7 @@ const ParaphraseApi = () => {
       .post(
         process.env.NODE_ENV == "production"
           ? process.env.PARAPHRASE_API || ""
-          : "http://localhost:8000/api/user/paraphrase",
+          : "http://localhost:5000/api/user/paraphrase",
         JSON.stringify(apiData),
         { headers }
       )
