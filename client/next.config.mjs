@@ -10,6 +10,7 @@ const nextConfig = {
     CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
     PARAPHRASE_API: process.env.PARAPHRASE_API,
     SUMMARIZE_API: process.env.SUMMARIZE_API,
+    PREDICT_API: process.env.PREDICT_API,
   },
 };
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useClientStore } from "@/store";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -20,12 +21,17 @@ const CustomUpload = () => {
     formData.append("file", selectedFile);
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/user/predict`, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await axios.post(
+        process.env.NODE_ENV == "production"
+          ? process.env.PREDICT_API || ""
+          : "http://127.0.0.1:5000/api/user/predict",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
-      const result = await response.json();
+      const result = await response.data;
       setData(result.message.text);
       setIsLoading(false);
       router.push("/summarizer/paste-text");
