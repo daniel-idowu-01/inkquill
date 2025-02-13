@@ -17,7 +17,7 @@ def extract_text_from_pdf(pdf_file):
         text += page.get_text()
     return text
 
-@app.post("/predict_pdf")
+@app.post("/extract-pdf")
 async def predict_pdf(file: UploadFile = File(...)):
     """Process PDF and return sentiment analysis."""
     # Save uploaded file temporarily
@@ -31,7 +31,7 @@ async def predict_pdf(file: UploadFile = File(...)):
     # Run sentiment analysis on extracted text
     result = model(text[:512])  # Limit to 512 characters for processing
 
-    return {"text": text[:200] + "...", "label": result[0]["label"], "score": result[0]["score"]}
+    return {"text": text, "label": result[0]["label"], "score": result[0]["score"]}
 
 # Run API
 if __name__ == "__main__":

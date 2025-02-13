@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['imgs.search.brave.com'],
+    domains: ["imgs.search.brave.com", "encrypted-tbn0.gstatic.com"],
   },
   env: {
-    OCR_API_KEY: "K83747338588957",
-    CLOUDINARY_PRESET_KEY: "yykpflgd",
-    CLOUDINARY_CLOUD_NAME: "ds8bolg2f",
-    PARAPHRASE_API: "https://inkquill.onrender.com/api/paraphrase",
-    SUMMARIZE_API: "https://inkquill.onrender.com/api/summarize",
-    OCR_API: "https://api.ocr.space/parse/image"
+    OCR_API_KEY: process.env.OCR_API_KEY,
+    OCR_API: process.env.OCR_API,
+    CLOUDINARY_PRESET_KEY: process.env.CLOUDINARY_PRESET_KEY,
+    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+    PARAPHRASE_API: process.env.PARAPHRASE_API,
+    SUMMARIZE_API: process.env.SUMMARIZE_API,
   },
 };
 
