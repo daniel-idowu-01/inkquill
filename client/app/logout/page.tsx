@@ -47,7 +47,6 @@ const Logout = () => {
               <button
                 type="button"
                 onClick={() => {
-                  // Remove the token and redirect to the home page
                   removeToken();
                   router.push("/");
                 }}
