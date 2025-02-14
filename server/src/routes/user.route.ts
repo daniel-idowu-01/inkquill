@@ -53,7 +53,7 @@ router.post(
 
       // Send PDF to FastAPI server
       const response = await axios.post(
-        "http://127.0.0.1:8000/predict_pdf",
+        "http://127.0.0.1:8000/extract-pdf",
         formData,
         {
           headers: { ...formData.getHeaders() },

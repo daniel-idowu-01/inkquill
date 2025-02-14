@@ -7,12 +7,12 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   const noNavbarRoutes = ["/login", "/signup"];
 
   return (
-    <body className="kanit-regular">
+    <div className="kanit-regular">
       <section className="p-7 md:px-10 lg:px-14 bg-azure-blue md:bg-cotton-white">
         {!noNavbarRoutes.includes(pathname) && <NavBar />}
       </section>
       {children}
-    </body>
+    </div>
   );
 }
 
