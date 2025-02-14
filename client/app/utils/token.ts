@@ -17,12 +17,17 @@ export const setTokenWithExpiration = ({ userId, token }: SetTokenParams) => {
     token,
     expiration: expirationTime,
   };
-  localStorage.setItem("user", JSON.stringify(tokenData));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("user", JSON.stringify(tokenData));
+  }
 };
 
 // Retrieve the token with expiration check
 export const getTokenWithExpiration = () => {
-  const storedUser = localStorage.getItem("user");
+  let storedUser;
+  if (typeof window !== "undefined") {
+    storedUser = localStorage.getItem("user");
+  }
   if (!storedUser) return null;
 
   const data = JSON.parse(storedUser);
@@ -33,7 +38,10 @@ export const getTokenWithExpiration = () => {
 
   // Check if the token has expired
   if (currentTime > data.expiration) {
-    localStorage.removeItem("user");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+    }
+
     return null;
   }
 
@@ -41,5 +49,7 @@ export const getTokenWithExpiration = () => {
 };
 
 export const removeToken = () => {
-  localStorage.removeItem("user");
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("user");
+  }
 };
