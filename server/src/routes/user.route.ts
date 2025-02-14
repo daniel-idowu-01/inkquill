@@ -53,7 +53,9 @@ router.post(
 
       // Send PDF to FastAPI server
       const response = await axios.post(
-        "http://127.0.0.1:8000/extract-pdf",
+        process.env.NODE_ENV == "production"
+          ? process.env.ML_API || ""
+          : "http://127.0.0.1:8000/extract-pdf",
         formData,
         {
           headers: { ...formData.getHeaders() },
